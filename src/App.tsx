@@ -1,8 +1,39 @@
-import { ChangeEvent, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import type { Attempt, Chapter, Choice, ParsedQuestion, Question } from './types';
 import { CHOICES } from './types';
 import { loadState, newId, saveState } from './storage';
 import { parseQuestions, type ParseResult } from './parse';
+
+const EXAM_DURATION_SEC = 60 * 60;
+
+function shuffleArray<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function shuffleQuestion(q: Question): Question {
+  const entries = CHOICES.map((c) => ({ original: c, text: q.choices[c] }));
+  const shuffled = shuffleArray(entries);
+  const newChoices: Record<Choice, string> = { A: '', B: '', C: '', D: '' };
+  let newCorrect: Choice = q.correct;
+  shuffled.forEach((entry, idx) => {
+    const letter = CHOICES[idx];
+    newChoices[letter] = entry.text;
+    if (entry.original === q.correct) newCorrect = letter;
+  });
+  return { ...q, choices: newChoices, correct: newCorrect };
+}
+
+function formatTime(sec: number): string {
+  const safe = Math.max(0, sec);
+  const m = Math.floor(safe / 60);
+  const s = safe % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
 
 type View =
   | { kind: 'home' }
@@ -20,6 +51,7 @@ export default function App() {
   const [view, setView] = useState<View>({ kind: 'home' });
   const [activeSet, setActiveSet] = useState<Question[]>([]);
   const [activeChapterId, setActiveChapterId] = useState<string | null>(null);
+  const [examDurationSec, setExamDurationSec] = useState<number | null>(null);
   const [attempts, setAttempts] = useState<Attempt[]>([]);
 
   useEffect(() => {
@@ -37,8 +69,20 @@ export default function App() {
 
   function startQuiz(subset: Question[], chapterId: string | null) {
     if (subset.length === 0) return;
-    setActiveSet(subset);
+    const shuffled = shuffleArray(subset).map(shuffleQuestion);
+    setActiveSet(shuffled);
     setActiveChapterId(chapterId);
+    setExamDurationSec(null);
+    setAttempts([]);
+    setView({ kind: 'quiz' });
+  }
+
+  function startFinalExam() {
+    if (questions.length === 0) return;
+    const shuffled = shuffleArray(questions).map(shuffleQuestion);
+    setActiveSet(shuffled);
+    setActiveChapterId(null);
+    setExamDurationSec(EXAM_DURATION_SEC);
     setAttempts([]);
     setView({ kind: 'quiz' });
   }
@@ -114,6 +158,7 @@ export default function App() {
           questions={questions}
           onOpen={(id) => setView({ kind: 'chapter', chapterId: id })}
           onAddChapter={addChapter}
+          onFinalExam={startFinalExam}
         />
       )}
 
@@ -160,7 +205,12 @@ export default function App() {
       {view.kind === 'quiz' && (
         <Quiz
           questions={activeSet}
-          chapterName={chapterById(activeChapterId)?.name ?? 'Quiz'}
+          chapterName={
+            examDurationSec !== null
+              ? 'Final Exam'
+              : chapterById(activeChapterId)?.name ?? 'Quiz'
+          }
+          examDurationSec={examDurationSec ?? undefined}
           onFinish={finishQuiz}
           onExit={() =>
             activeChapterId
@@ -176,8 +226,10 @@ export default function App() {
           questions={activeSet}
           chapter={chapterById(activeChapterId)}
           onRetryMissed={() => {
-            const missedIds = new Set(attempts.filter((a) => !a.correct).map((a) => a.questionId));
-            const subset = activeSet.filter((q) => missedIds.has(q.id));
+            const correctIds = new Set(
+              attempts.filter((a) => a.correct).map((a) => a.questionId)
+            );
+            const subset = activeSet.filter((q) => !correctIds.has(q.id));
             startQuiz(subset, activeChapterId);
           }}
           onRetryAll={() => startQuiz(activeSet, activeChapterId)}
@@ -207,8 +259,9 @@ function Home(props: {
   questions: Question[];
   onOpen: (id: string) => void;
   onAddChapter: () => void;
+  onFinalExam: () => void;
 }) {
-  const { chapters, questions, onOpen, onAddChapter } = props;
+  const { chapters, questions, onOpen, onAddChapter, onFinalExam } = props;
   const countByChapter = useMemo(() => {
     const map: Record<string, number> = {};
     for (const q of questions) map[q.chapterId] = (map[q.chapterId] ?? 0) + 1;
@@ -221,6 +274,16 @@ function Home(props: {
       <p className="muted">
         Organize questions by chapter. Add questions by hand or paste/upload in bulk.
       </p>
+
+      <div className="row" style={{ marginTop: 16 }}>
+        <button
+          className="btn primary btn-block"
+          onClick={onFinalExam}
+          disabled={questions.length === 0}
+        >
+          Final Exam · {questions.length} question{questions.length === 1 ? '' : 's'} · 60 min
+        </button>
+      </div>
 
       <div style={{ marginTop: 16 }}>
         {chapters.length === 0 && (
@@ -238,7 +301,7 @@ function Home(props: {
               <div className="chapter-row-main">
                 <div className="chapter-row-name">{c.name}</div>
                 <div className="chapter-row-meta">
-                  {count} / {count} question{count === 1 ? '' : 's'}
+                  {count} question{count === 1 ? '' : 's'}
                 </div>
               </div>
               <div className="chapter-row-arrow" aria-hidden>
@@ -250,7 +313,7 @@ function Home(props: {
       </div>
 
       <div className="row" style={{ marginTop: 16 }}>
-        <button className="btn primary btn-block" onClick={onAddChapter}>
+        <button className="btn btn-block" onClick={onAddChapter}>
           Add chapter
         </button>
       </div>
@@ -316,13 +379,38 @@ function ChapterView(props: {
 function Quiz(props: {
   questions: Question[];
   chapterName: string;
+  examDurationSec?: number;
   onFinish: (attempts: Attempt[]) => void;
   onExit: () => void;
 }) {
-  const { questions, chapterName, onFinish, onExit } = props;
+  const { questions, chapterName, examDurationSec, onFinish, onExit } = props;
   const [idx, setIdx] = useState(0);
   const [attempts, setAttempts] = useState<Attempt[]>([]);
   const [pendingSelection, setPendingSelection] = useState<Choice | null>(null);
+  const [remainingSec, setRemainingSec] = useState<number | null>(
+    examDurationSec ?? null
+  );
+  const attemptsRef = useRef(attempts);
+  useEffect(() => {
+    attemptsRef.current = attempts;
+  }, [attempts]);
+  const finishRef = useRef(onFinish);
+  useEffect(() => {
+    finishRef.current = onFinish;
+  }, [onFinish]);
+
+  useEffect(() => {
+    if (remainingSec === null) return;
+    if (remainingSec <= 0) {
+      finishRef.current(attemptsRef.current);
+      return;
+    }
+    const id = setTimeout(
+      () => setRemainingSec((s) => (s === null ? null : s - 1)),
+      1000
+    );
+    return () => clearTimeout(id);
+  }, [remainingSec]);
 
   const q = questions[idx];
   const total = questions.length;
@@ -447,6 +535,11 @@ function Quiz(props: {
       <div className="quiz-footer">
         <div className="quiz-footer-right">
           <div className="quiz-chapter">{chapterName}</div>
+          {remainingSec !== null && (
+            <div className={`quiz-timer ${remainingSec <= 60 ? 'low' : ''}`}>
+              {formatTime(remainingSec)}
+            </div>
+          )}
           <span className="quiz-counter">
             {idx + 1} of {total}
           </span>
@@ -481,14 +574,17 @@ function Results(props: {
   onBackToChapter: () => void;
 }) {
   const { attempts, questions, chapter, onRetryMissed, onRetryAll, onBackToChapter } = props;
+  const total = questions.length;
   const correct = attempts.filter((a) => a.correct).length;
-  const total = attempts.length;
   const pct = total ? Math.round((correct / total) * 100) : 0;
-  const missed = attempts.filter((a) => !a.correct);
-  const qById = useMemo(
-    () => Object.fromEntries(questions.map((q) => [q.id, q])),
-    [questions]
+  const correctIds = new Set(
+    attempts.filter((a) => a.correct).map((a) => a.questionId)
   );
+  const attemptById = useMemo(
+    () => Object.fromEntries(attempts.map((a) => [a.questionId, a])),
+    [attempts]
+  );
+  const missedQuestions = questions.filter((q) => !correctIds.has(q.id));
 
   return (
     <div className="card">
@@ -497,15 +593,20 @@ function Results(props: {
       <div className="score-big">
         {correct}/{total}
       </div>
-      <div className="score-sub">{pct}% correct</div>
+      <div className="score-sub">
+        {pct}% correct
+        {attempts.length < total
+          ? ` · ${total - attempts.length} unanswered`
+          : ''}
+      </div>
 
       <div className="row">
         <button
           className="btn primary btn-block"
           onClick={onRetryMissed}
-          disabled={missed.length === 0}
+          disabled={missedQuestions.length === 0}
         >
-          Retry missed ({missed.length})
+          Retry missed ({missedQuestions.length})
         </button>
       </div>
       <div className="row" style={{ marginTop: 8 }}>
@@ -517,18 +618,21 @@ function Results(props: {
         </button>
       </div>
 
-      {missed.length > 0 && (
+      {missedQuestions.length > 0 && (
         <>
           <h2 style={{ marginTop: 24, fontSize: 16 }}>Missed questions</h2>
-          {missed.map((a) => {
-            const q = qById[a.questionId];
-            if (!q) return null;
+          {missedQuestions.map((q) => {
+            const a = attemptById[q.id];
             return (
-              <div key={a.questionId} className="missed-q">
+              <div key={q.id} className="missed-q">
                 <div className="q">{q.text}</div>
-                <div className="a wrong">
-                  Your answer: {a.selected}. {q.choices[a.selected]}
-                </div>
+                {a ? (
+                  <div className="a wrong">
+                    Your answer: {a.selected}. {q.choices[a.selected]}
+                  </div>
+                ) : (
+                  <div className="a wrong">Unanswered</div>
+                )}
                 <div className="a correct">
                   Correct: {q.correct}. {q.choices[q.correct]}
                 </div>

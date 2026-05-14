@@ -294,6 +294,24 @@ body {
   font-size: 14px;
   margin-right: 10px;
 }
+.quiz-timer {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  margin-right: 6px;
+}
+.quiz-timer.low {
+  background: #c81e1e;
+  animation: timer-pulse 1s ease-in-out infinite;
+}
+@keyframes timer-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
 .quiz-counter {
   color: var(--accent);
   font-size: 14px;
