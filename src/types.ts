@@ -5,6 +5,7 @@ export const CHOICES: Choice[] = ['A', 'B', 'C', 'D'];
 export type Chapter = {
   id: string;
   name: string;
+  source?: string;
 };
 
 export type Question = {

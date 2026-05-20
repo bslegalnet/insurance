@@ -52,6 +52,7 @@ export default function App() {
   const [activeSet, setActiveSet] = useState<Question[]>([]);
   const [activeChapterId, setActiveChapterId] = useState<string | null>(null);
   const [examDurationSec, setExamDurationSec] = useState<number | null>(null);
+  const [examLabel, setExamLabel] = useState<string | null>(null);
   const [attempts, setAttempts] = useState<Attempt[]>([]);
 
   useEffect(() => {
@@ -73,6 +74,7 @@ export default function App() {
     setActiveSet(shuffled);
     setActiveChapterId(chapterId);
     setExamDurationSec(null);
+    setExamLabel(null);
     setAttempts([]);
     setView({ kind: 'quiz' });
   }
@@ -83,6 +85,24 @@ export default function App() {
     setActiveSet(shuffled);
     setActiveChapterId(null);
     setExamDurationSec(EXAM_DURATION_SEC);
+    setExamLabel('Final Exam');
+    setAttempts([]);
+    setView({ kind: 'quiz' });
+  }
+
+  function startFinalExam2() {
+    const exam2ChapterIds = new Set(
+      chapters.filter((c) => c.source === 'exam2').map((c) => c.id)
+    );
+    const exam2Questions = questions.filter((q) =>
+      exam2ChapterIds.has(q.chapterId)
+    );
+    if (exam2Questions.length === 0) return;
+    const shuffled = shuffleArray(exam2Questions).map(shuffleQuestion);
+    setActiveSet(shuffled);
+    setActiveChapterId(null);
+    setExamDurationSec(EXAM_DURATION_SEC);
+    setExamLabel('Final Exam 2');
     setAttempts([]);
     setView({ kind: 'quiz' });
   }
@@ -159,6 +179,7 @@ export default function App() {
           onOpen={(id) => setView({ kind: 'chapter', chapterId: id })}
           onAddChapter={addChapter}
           onFinalExam={startFinalExam}
+          onFinalExam2={startFinalExam2}
         />
       )}
 
@@ -206,9 +227,10 @@ export default function App() {
         <Quiz
           questions={activeSet}
           chapterName={
-            examDurationSec !== null
+            examLabel ??
+            (examDurationSec !== null
               ? 'Final Exam'
-              : chapterById(activeChapterId)?.name ?? 'Quiz'
+              : chapterById(activeChapterId)?.name ?? 'Quiz')
           }
           examDurationSec={examDurationSec ?? undefined}
           onFinish={finishQuiz}
@@ -260,13 +282,20 @@ function Home(props: {
   onOpen: (id: string) => void;
   onAddChapter: () => void;
   onFinalExam: () => void;
+  onFinalExam2: () => void;
 }) {
-  const { chapters, questions, onOpen, onAddChapter, onFinalExam } = props;
+  const { chapters, questions, onOpen, onAddChapter, onFinalExam, onFinalExam2 } = props;
   const countByChapter = useMemo(() => {
     const map: Record<string, number> = {};
     for (const q of questions) map[q.chapterId] = (map[q.chapterId] ?? 0) + 1;
     return map;
   }, [questions]);
+  const exam2Count = useMemo(() => {
+    const exam2Ids = new Set(
+      chapters.filter((c) => c.source === 'exam2').map((c) => c.id)
+    );
+    return questions.filter((q) => exam2Ids.has(q.chapterId)).length;
+  }, [chapters, questions]);
 
   return (
     <div className="card">
@@ -282,6 +311,16 @@ function Home(props: {
           disabled={questions.length === 0}
         >
           Final Exam · {questions.length} question{questions.length === 1 ? '' : 's'} · 60 min
+        </button>
+      </div>
+
+      <div className="row" style={{ marginTop: 8 }}>
+        <button
+          className="btn primary btn-block"
+          onClick={onFinalExam2}
+          disabled={exam2Count === 0}
+        >
+          Final Exam 2 · {exam2Count} question{exam2Count === 1 ? '' : 's'} · 60 min
         </button>
       </div>
 

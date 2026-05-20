@@ -5,6 +5,7 @@ type SampleQuestion = Omit<Question, 'chapterId'>;
 export type SampleChapter = {
   name: string;
   questions: SampleQuestion[];
+  source?: string;
 };
 
 const CHAPTER_1: SampleQuestion[] = [
@@ -2659,6 +2660,1643 @@ const CHAPTER_6: SampleQuestion[] = [
   },
 ];
 
+const CHAPTER_7: SampleQuestion[] = [
+  {
+    id: 'q7-controlled-business-def',
+    text: 'What would be an accurate definition of "controlled business"?',
+    choices: {
+      A: 'Insurance business obtained by an agent through coercion, intimidation, or boycotting',
+      B: "Insurance business that is written on the agent's own life, property, or interests",
+      C: 'Insurance business that is obtained by replacing an existing policy through misrepresentation',
+      D: 'Insurance business that is obtained through false advertising',
+    },
+    correct: 'B',
+    explanation:
+      "Controlled business is insurance the agent writes on themselves, family, employer, or own business interests. Florida restricts this to prevent people from getting licensed solely to collect commissions on their own insurance needs.\n\nExam key: Controlled business = self/family/own interests. Coercion = unfair trade practice. Twisting = misrepresentation to replace. False advertising = misleading info.",
+  },
+  {
+    id: 'q7-owner-names-beneficiary',
+    text: 'Under a life insurance policy, the ________ has the authority to name the beneficiary.',
+    choices: {
+      A: 'agent',
+      B: 'underwriter',
+      C: 'beneficiary',
+      D: 'owner',
+    },
+    correct: 'D',
+    explanation:
+      "The policyowner holds all contractual rights including naming/changing beneficiary (unless irrevocable), taking loans, surrendering, assigning. The owner isn't always the insured.\n\nExam key: Owner controls the beneficiary designation, not the insured or the insurer.",
+  },
+  {
+    id: 'q7-dfs-hearing-unlicensed',
+    text: 'Which action could result in a hearing being ordered by the Department of Financial Services?',
+    choices: {
+      A: 'Sharing commissions with another licensed agent',
+      B: 'Representing a foreign insurer',
+      C: 'Conducting insurance business in this state while being a resident of another',
+      D: 'Performing insurance transactions without a license',
+    },
+    correct: 'D',
+    explanation:
+      'Transacting insurance without a license is a third-degree felony in Florida and triggers DFS hearings, fines, and cease-and-desist orders.\n\nExam key: Unlicensed transactions = DFS hearing. Sharing commissions between licensed agents is legal. Representing a foreign insurer and non-resident licenses are legal.',
+  },
+  {
+    id: 'q7-variable-annuity-annual-notice',
+    text: 'Under Florida law, a variable annuity policyowner must be notified of the accumulated value of the contract',
+    choices: {
+      A: 'once each year',
+      B: 'once each month',
+      C: 'only when requested by the policyowner',
+      D: 'twice each year',
+    },
+    correct: 'A',
+    explanation:
+      'Florida requires insurers to provide an annual statement showing the accumulated value of variable annuity contracts so owners stay informed about separate account performance.\n\nExam key: Variable annuity = annual statement required.',
+  },
+  {
+    id: 'q7-oir-approves-forms',
+    text: 'Which entity approves the insurance policy forms used in Florida?',
+    choices: {
+      A: 'Department of Financial Services (DFS)',
+      B: 'Financial Services Commission (FSC)',
+      C: 'Office of Insurance Regulation (OIR)',
+      D: 'National Association of Insurance Commissioners (NAIC)',
+    },
+    correct: 'C',
+    explanation:
+      'OIR reviews and approves policy forms, rates, and contracts before insurers can sell in Florida.\n\nExam key: OIR = forms/rates/solvency. DFS = agent licensing/consumer complaints/fraud. FSC = Governor + Cabinet, sets policy. NAIC = no direct Florida authority.',
+  },
+  {
+    id: 'q7-agent-not-authorize-claims',
+    text: 'Which of the following acts is an agent NOT authorized to do on behalf of an insurer?',
+    choices: {
+      A: 'Complete insurance applications',
+      B: 'Authorize claim payments',
+      C: 'Ask health related questions',
+      D: 'Accept premiums from policyowners',
+    },
+    correct: 'B',
+    explanation:
+      "Authorizing claim payments belongs to the claims adjuster and the insurer's claims department. Agents handle the front-end: solicit, negotiate, sell.\n\nExam key: Agent = front-end work (applications, premiums, field underwriting). Claims authorization = adjuster only.",
+  },
+  {
+    id: 'q7-rebating-example',
+    text: 'An example of rebating would be',
+    choices: {
+      A: 'reducing the premiums across the board for a specific risk class',
+      B: 'a mutual insurance company paying dividends to its policyowners',
+      C: 'offering a client something of value not stated in the contract in exchange for their business',
+      D: 'using intimidation in order to restrain or monopolize the business of insurance.',
+    },
+    correct: 'C',
+    explanation:
+      'Rebating is offering anything of value not in the policy as an inducement to buy. Florida allows promotional gifts up to $100/person/year as advertising.\n\nExam key: Rebating = inducements not in the contract. Mutual dividends are a legal return of premium. Coercion is a separate practice.',
+  },
+  {
+    id: 'q7-employee-health-care-access-act',
+    text: 'The Florida Employee Health Care Access Act was established to make',
+    choices: {
+      A: 'health insurance affordable for families with children',
+      B: 'health insurance affordable to retired individuals',
+      C: 'individual health insurance available to all Floridians',
+      D: 'group health insurance available to employers with up to 50 employees',
+    },
+    correct: 'D',
+    explanation:
+      'The Act promotes group health coverage for small employers (1-50 employees) regardless of claims experience or employee health status. Includes guaranteed issue, guaranteed renewability, and rating limits.\n\nExam key: Employee Health Care Access Act = small employer (1-50) group plans, guaranteed issue.',
+  },
+  {
+    id: 'q7-ltc-free-look-30',
+    text: 'The free-look period for all qualified Long-term care policies sold in Florida is __ days.',
+    choices: {
+      A: '40',
+      B: '20',
+      C: '10',
+      D: '30',
+    },
+    correct: 'D',
+    explanation:
+      'Florida requires a 30-day free-look for qualified LTC policies — longer than the standard 14-day free-look — due to the complexity and long-term commitment.\n\nExam key: LTC free-look = 30 days. Standard life/health = 14 days.',
+  },
+  {
+    id: 'q7-dfs-financial-institutions-code',
+    text: 'Any violations of the Florida financial institutions code may be investigated by the',
+    choices: {
+      A: 'Department of Financial Services (DFS)',
+      B: 'Department of Homeland Security (DHS)',
+      C: 'Office of Insurance Regulation (OIR)',
+      D: "Attorney General's office",
+    },
+    correct: 'A',
+    explanation:
+      'DFS, headed by the CFO, has broad investigative authority over the Florida Insurance Code and financial institutions code violations through its Division of Investigative and Forensic Services.\n\nExam key: DFS investigates violations of the Florida Insurance Code and financial institutions code.',
+  },
+  {
+    id: 'q7-medsupp-preex-6-max',
+    text: 'The waiting period for a pre-existing condition under a Medicare Supplement policy may NOT go beyond',
+    choices: {
+      A: '3 months',
+      B: '6 months',
+      C: '1 month',
+      D: '12 months',
+    },
+    correct: 'B',
+    explanation:
+      'Florida/federal law caps the Medicare Supplement pre-existing waiting period at 6 months. Prior creditable coverage must be credited toward that period.\n\nExam key: Medicare Supplement pre-existing limit = 6 months MAX.',
+  },
+  {
+    id: 'q7-di-claims-monthly',
+    text: 'Under an Individual Disability policy in Florida, what is the minimum schedule of time in which claims must be made to an insured?',
+    choices: {
+      A: 'Weekly',
+      B: 'Daily',
+      C: 'Annually',
+      D: 'Monthly',
+    },
+    correct: 'D',
+    explanation:
+      'Florida requires individual DI policies to pay claims at least monthly once approved. Insurer can pay more often but monthly is the minimum.\n\nExam key: DI claims = at least monthly under Florida law.',
+  },
+  {
+    id: 'q7-medsupp-not-required-12',
+    text: 'Under Florida law, which of the following provisions is NOT required in a Medicare Supplement policy?',
+    choices: {
+      A: 'Suitability form',
+      B: 'Limitation on pre-existing conditions for up to 12 months',
+      C: 'Guaranteed issue',
+      D: 'Free-look period of 30 days',
+    },
+    correct: 'B',
+    explanation:
+      'Florida caps Medicare Supplement pre-existing exclusions at 6 months MAX, not 12. The others ARE required: suitability form, guaranteed issue during open enrollment, 30-day free-look.\n\nExam key: 12-month pre-existing exceeds the 6-month max for Medicare Supplements.',
+  },
+  {
+    id: 'q7-disabled-child-extension',
+    text: 'Upon reaching the limiting age, a disabled child may extend their health insurance coverage as a dependent',
+    choices: {
+      A: 'only if mentally disabled',
+      B: 'for up to an additional 10 years only',
+      C: 'only if the child is incapable of employment and chiefly dependent on the policyowner',
+      D: 'only if physically disabled',
+    },
+    correct: 'C',
+    explanation:
+      'Coverage continues past the limiting age if the child is incapable of self-sustaining employment AND chiefly dependent. Mental OR physical disability qualifies; no 10-year cap.\n\nExam key: Disabled dependent = incapable + chiefly dependent. Either mental or physical. Indefinite extension.',
+  },
+  {
+    id: 'q7-variable-annuity-regulators',
+    text: 'Which two entities regulate variable annuities?',
+    choices: {
+      A: 'National Association of Insurance and Financial Advisors; and Securities Exchange Commission',
+      B: 'Department of Financial Services; and Securities Exchange Commission',
+      C: 'Financial Industry Regulatory Authority; and Department of Financial Services',
+      D: 'National Association of Insurance Commissioners; and Department of Financial Services',
+    },
+    correct: 'B',
+    explanation:
+      'Variable annuities are dual-regulated. DFS = state insurance side (contract, licensing, suitability). SEC = federal securities side (separate accounts).\n\nExam key: Variable annuity = DFS (state insurance) + SEC (federal securities). Agents need both an insurance license and a FINRA Series 6/7.',
+  },
+  {
+    id: 'q7-noncontributory-fl-min',
+    text: 'What is the required minimum percentage of employee participation for a noncontributory group health insurance plan according to Florida Law?',
+    choices: {
+      A: '75%',
+      B: '0%',
+      C: '25%',
+      D: '100%',
+    },
+    correct: 'B',
+    explanation:
+      'Florida law does not impose a specific minimum participation percentage for employee group health insurance. Industry/carrier practice is typically 100% for noncontributory, but statutorily Florida has no minimum.\n\nExam key: Florida statutory minimum = 0% (none). Industry standard = 100% noncontributory, 75% contributory. Watch for "Florida law" wording.',
+  },
+  {
+    id: 'q7-viatical-settlement-provider',
+    text: "A life insurance policyowner may sell their policy to a(n) _____ in order to receive a percentage of the policy's face value.",
+    choices: {
+      A: 'insurer',
+      B: 'broker',
+      C: 'viator agent',
+      D: 'viatical settlement provider',
+    },
+    correct: 'D',
+    explanation:
+      'A viatical settlement is when a terminally/chronically ill policyowner sells the policy to a viatical settlement provider for a lump sum (less than face, more than cash surrender). Florida providers must be licensed by OIR.\n\nExam key: Viator sells to a viatical settlement PROVIDER (not broker — the broker just negotiates).',
+  },
+  {
+    id: 'q7-insurance-transaction-element',
+    text: 'In Florida, an element of an insurance transaction would be',
+    choices: {
+      A: 'ordering an MIB report',
+      B: 'determining how much coverage is needed',
+      C: 'issuing an insurance contract',
+      D: 'setting up the sales appointment',
+    },
+    correct: 'C',
+    explanation:
+      'Florida defines an "insurance transaction" as soliciting, negotiating, selling, advising on existing coverage — and issuing a contract. MIB ordering, needs analysis, and appointment setting are not transactions.\n\nExam key: Insurance transaction = solicit/negotiate/sell/issue/advise. Pre-transaction admin work does not count.',
+  },
+  {
+    id: 'q7-complaint-oversight',
+    text: 'A life insurance policyowner would like to file a complaint against a life insurance agent. In Florida, the entity that oversees these complaints is called the',
+    choices: {
+      A: 'Securities Exchange Commission',
+      B: 'Office of Insurance Regulation',
+      C: 'Department of Financial Services',
+      D: 'Department of Homeland Security',
+    },
+    correct: 'C',
+    explanation:
+      'DFS (Division of Consumer Services) handles consumer complaints against agents, agencies, and adjusters. DFS can investigate fraud and discipline agents.\n\nExam key: Complaints against agents = DFS. OIR regulates insurers, not agent conduct.',
+  },
+  {
+    id: 'q7-domestic-company',
+    text: 'In Florida, an insurer domiciled and incorporated in this state is called a(n)',
+    choices: {
+      A: 'foreign company',
+      B: 'alien company',
+      C: 'domestic company',
+      D: 'admitted company',
+    },
+    correct: 'C',
+    explanation:
+      'Domestic = incorporated/headquartered in the state where doing business. Foreign = another U.S. state. Alien = another country. Admitted = has a Certificate of Authority (any of the above can be admitted).\n\nExam key: Domestic = home state. Foreign = other U.S. state. Alien = other country.',
+  },
+  {
+    id: 'q7-policy-loan-10-max',
+    text: 'A life policy loan in Florida cannot charge a fixed rate of interest higher than',
+    choices: {
+      A: '9%',
+      B: '10%',
+      C: '7%',
+      D: '8%',
+    },
+    correct: 'B',
+    explanation:
+      "Florida caps fixed life policy loan rates at 10%. Adjustable rates must follow Moody's Corporate Bond Yield Average per statute.\n\nExam key: Florida fixed policy loan max = 10%. Outstanding loans + interest are deducted from the death benefit.",
+  },
+  {
+    id: 'q7-foreign-company-nj',
+    text: 'In Florida, an insurer licensed to conduct business in Florida, but domiciled in New Jersey, is called a(n)',
+    choices: {
+      A: 'domestic company',
+      B: 'alien company',
+      C: 'non-admitted company',
+      D: 'foreign company',
+    },
+    correct: 'D',
+    explanation:
+      'Foreign = incorporated in another U.S. state but admitted in Florida. A New Jersey-domiciled insurer doing business in Florida = foreign.\n\nExam key: Another U.S. state = foreign. Another country = alien.',
+  },
+  {
+    id: 'q7-agent-appointment-48-months',
+    text: "A licensed agent must be appointed by an insurance company to solicit insurance in Florida. The agent's license will terminate if a certain period of time elapses without being appointed. How long is this period of time?",
+    choices: {
+      A: '36 months',
+      B: '24 months',
+      C: '48 months',
+      D: '12 months',
+    },
+    correct: 'C',
+    explanation:
+      'Florida agent licenses auto-terminate after 48 months (4 years) without an appointment. Reapplication requires pre-licensing education, exam, and the full process.\n\nExam key: 48 months without appointment = license termination.',
+  },
+  {
+    id: 'q7-controlled-business-max-50',
+    text: 'In Florida, what is the maximum percentage of controlled business an agent may produce?',
+    choices: {
+      A: '30%',
+      B: '60%',
+      C: '50%',
+      D: '40%',
+    },
+    correct: 'C',
+    explanation:
+      'Florida caps controlled business at 50% of total volume in a 12-month period. More than half of business must come from the general public to maintain the license.\n\nExam key: Controlled business max = 50% of total business.',
+  },
+  {
+    id: 'q7-group-life-conversion-no-evidence',
+    text: 'According to Florida law, group life insurance conversion privileges must NOT',
+    choices: {
+      A: 'allow the converted policy to exceed 75% of the original group life amount',
+      B: 'allow a time period to convert group life coverage to an individual life policy',
+      C: 'require evidence of insurability',
+      D: 'require a rate increase',
+    },
+    correct: 'C',
+    explanation:
+      'Florida group conversion cannot require evidence of insurability. A time limit (31 days) and individual rates (higher than group) ARE allowed.\n\nExam key: Group life conversion = no evidence of insurability; 31-day window; individual rates allowed.',
+  },
+  {
+    id: 'q7-health-cancel-45-day',
+    text: 'A __ day notice to the policyholder is required for any health insurer that wishes to cancel a health insurance policy.',
+    choices: {
+      A: '45',
+      B: '90',
+      C: '60',
+      D: '30',
+    },
+    correct: 'A',
+    explanation:
+      'Florida requires 45 days written notice before a health insurer can cancel or non-renew. Gives the policyholder time to find alternative coverage.\n\nExam key: Health cancellation = 45-day notice.',
+  },
+  {
+    id: 'q7-group-life-certificate-holder',
+    text: 'An individual covered under a Group Life insurance policy is considered to be a(n)',
+    choices: {
+      A: 'annuitant',
+      B: 'policyowner',
+      C: 'certificate holder',
+      D: 'contingent',
+    },
+    correct: 'C',
+    explanation:
+      "Master policy is issued to the group sponsor (policyowner). Individuals get certificates = certificate holders. They name their own beneficiaries and have conversion rights but can't change master policy terms.\n\nExam key: Group life individual = certificate holder. Master policy goes to employer/sponsor.",
+  },
+  {
+    id: 'q7-ltc-lapse-secondary-addressee',
+    text: 'A long-term care lapse notice must be delivered to both the applicant and',
+    choices: {
+      A: 'secondary addressee',
+      B: 'beneficiary',
+      C: 'MIB',
+      D: 'personal physician',
+    },
+    correct: 'A',
+    explanation:
+      "Florida requires LTC lapse notice to the applicant AND a designated secondary addressee. Applicant can decline (with a written waiver). Insurer must re-offer this every 2 years. Notice goes out at least 30 days before lapse. Protects older insureds who may develop cognitive issues.\n\nExam key: LTC lapse notice = applicant + secondary addressee.",
+  },
+  {
+    id: 'q7-four-principal-areas-except',
+    text: 'All of the following entries are classified under the four principal areas of Florida insurance law EXCEPT',
+    choices: {
+      A: 'Policy provisions',
+      B: "Policyowner's rights",
+      C: "An agent's licensing requirements",
+      D: "An agent's commission",
+    },
+    correct: 'D',
+    explanation:
+      "Four principal areas: marketing practices, policy provisions, policyowner's rights, agent licensing requirements. Commissions are private contracts, not a regulatory category.\n\nExam key: Four areas = Marketing / Policy provisions / Policyowner rights / Licensing. Commissions are not one.",
+  },
+  {
+    id: 'q7-suspension-except-fiduciary',
+    text: "All of the following will result in the suspension of an agent's license EXCEPT",
+    choices: {
+      A: 'being convicted of a felony',
+      B: 'intentionally misrepresenting the provisions of a policy',
+      C: 'acting with fiduciary responsibility',
+      D: 'forging a name on an insurance application',
+    },
+    correct: 'C',
+    explanation:
+      "Fiduciary responsibility is REQUIRED behavior, not a violation. Felony conviction, misrepresentation (twisting), and forgery all result in suspension or revocation.\n\nExam key: Fiduciary duty = expected behavior. Felony/misrepresentation/forgery = violations.",
+  },
+  {
+    id: 'q7-medsupp-outline-at-app',
+    text: 'According to Florida law, when must an agent deliver the Outline of Coverage to a Medicare Supplement applicant?',
+    choices: {
+      A: 'Within 14 days of the time of application',
+      B: 'At the time of policy delivery',
+      C: 'At the time of application',
+      D: 'Within 14 days of policy delivery',
+    },
+    correct: 'C',
+    explanation:
+      'The Outline of Coverage for a Medicare Supplement must be delivered AT TIME OF APPLICATION — before the applicant decides. Standardized format including plan comparison (A-N).\n\nExam key: Medicare Supplement Outline = AT application (not delivery). Different from many other coverages.',
+  },
+  {
+    id: 'q7-variable-license-exam',
+    text: 'If an agent would like to sell Variable annuities, which state examination must the agent pass?',
+    choices: {
+      A: 'Accident and Health insurance',
+      B: 'Variable annuities',
+      C: 'Life insurance',
+      D: 'Life and Variable contracts',
+    },
+    correct: 'D',
+    explanation:
+      'Florida 2-14 (Life Including Variable Annuity) or 2-15 (Life Including Variable Annuity & Health) license is required. Plus FINRA Series 6 or 7 and broker-dealer registration.\n\nExam key: Variable annuity sale = Life and Variable Annuity license + FINRA. A plain life license is NOT enough.',
+  },
+];
+
+const CHAPTER_8: SampleQuestion[] = [
+  {
+    id: 'q8-medsupp-open-enrollment-6',
+    text: 'An application for Medicare Supplement coverage may NOT be denied by the insurer if the application was submitted within ___ month(s) after the applicant reaches the age of 65.',
+    choices: {
+      A: 'three',
+      B: 'one',
+      C: 'nine',
+      D: 'six',
+    },
+    correct: 'D',
+    explanation:
+      'The 6-month Medicare Supplement Open Enrollment Period starts on the first day of the month an applicant is 65+ AND enrolled in Part B. Guaranteed issue, no medical underwriting, max 6-month pre-existing limit.\n\nExam key: Medicare Supplement open enrollment = 6 months, guaranteed issue.',
+  },
+  {
+    id: 'q8-group-life-cancel-notify-employees',
+    text: 'J owns a business and has a Group Life policy covering her employees. J decides to cancel the policy by letting it lapse on the renewal date. What action must be taken?',
+    choices: {
+      A: 'No obligation is required from either the insurance company nor J',
+      B: 'J must cover the group with another policy at cancellation',
+      C: "The insurance company must replace the existing policy with one to J's liking",
+      D: 'All of the employees must be notified of the cancellation either by the insurance company or through J',
+    },
+    correct: 'D',
+    explanation:
+      'All certificate holders must be notified so they can exercise conversion rights (31 days) or seek other coverage. Notification can come from insurer OR employer.\n\nExam key: Group life cancellation = employees notified by insurer OR employer.',
+  },
+  {
+    id: 'q8-coercion-rights-impaired',
+    text: 'J is an agent who recently told a claimant that his rights might be impaired if he does not complete a release form within a specified time. What could this agent be found guilty of?',
+    choices: {
+      A: 'Defamation',
+      B: 'Twisting',
+      C: 'Coercion',
+      D: 'Rebating',
+    },
+    correct: 'C',
+    explanation:
+      'Coercion is using threats, intimidation, or pressure to influence insurance decisions. Telling a claimant "rights might be impaired" is a threat. Twisting = policy replacement misrepresentation. Defamation = false statements harming reputation. Rebating = giving inducements.\n\nExam key: Threats/pressure = coercion. Twisting is about policy replacement, not claims.',
+  },
+  {
+    id: 'q8-k-certificate-holder',
+    text: 'K is insured under a Group Life insurance policy. K is considered to be a(n)',
+    choices: {
+      A: 'certificate holder',
+      B: 'policyowner',
+      C: 'annuitant',
+      D: 'beneficiary',
+    },
+    correct: 'A',
+    explanation:
+      'Group life insureds = certificate holders. Master policy goes to the group sponsor; certificates go to members.\n\nExam key: Insured under group life = certificate holder.',
+  },
+  {
+    id: 'q8-fiduciary-responsibility',
+    text: "T is an agent and when hired, is reminded that he has a responsibility to handle clients' funds in an honest and ethical manner. This responsibility is referred to as",
+    choices: {
+      A: 'fiduciary responsibility',
+      B: 'reasonable trust',
+      C: 'legal competence',
+      D: 'ethical behavior',
+    },
+    correct: 'A',
+    explanation:
+      "Fiduciary responsibility is the duty to act in the client's best interest, handle premium funds properly, no commingling, accurate records. Commingling/embezzlement is among the most serious violations.\n\nExam key: Handling client funds = fiduciary responsibility (prompt deposit/forwarding, no commingling).",
+  },
+  {
+    id: 'q8-false-advertising',
+    text: "The act of an insurance company publishing misleading information about its policy's provisions is called",
+    choices: {
+      A: 'false advertising',
+      B: 'intimidation',
+      C: 'coercion',
+      D: 'twisting',
+    },
+    correct: 'A',
+    explanation:
+      'False advertising is publishing/distributing misleading information about policy provisions, benefits, dividends, or financial condition. Twisting specifically = misrepresentation to induce policy replacement.\n\nExam key: Misleading policy info to the public = false advertising. Misrepresenting to replace a policy = twisting.',
+  },
+  {
+    id: 'q8-cross-purchase-buy-sell',
+    text: 'Two partners own equal shares in a business worth a total of $1,000,000. If they both commit to the purchase of a life insurance policy that will fund a Buy-Sell Agreement, which of the following is TRUE?',
+    choices: {
+      A: 'Each partner owns a $1,000,000 policy on their own life',
+      B: 'Each partner owns a $500,000 policy on their own life',
+      C: "Each partner owns a $500,000 policy on their partner's life",
+      D: "Each partner owns a $1,000,000 policy on their partner's life",
+    },
+    correct: 'C',
+    explanation:
+      "Cross-Purchase Buy-Sell: each partner owns/pays/is beneficiary of a policy on the OTHER partner's life. Face amount = value of that partner's share ($500K each since 50/50 of $1M).\n\nExam key: Cross-Purchase = policies on partner's life equal to that partner's share value.",
+  },
+  {
+    id: 'q8-hospital-surgical-deductibles',
+    text: "A Hospital/Surgical Expense policy was purchased for a family of four in March of 2013. The policy was issued with a $500 deductible and a limit of four deductibles per calendar year. Two claims were paid in September 2013, each incurring medical expenses in excess of the deductible. Two additional claims were filed in 2014, each in excess of the deductible amount as well. What would be this family's out-of-pocket medical expenses for 2013?",
+    choices: {
+      A: '$1,500',
+      B: '$1,000',
+      C: '$500',
+      D: '$2,000',
+    },
+    correct: 'B',
+    explanation:
+      "2 claims × $500 = $1,000. The 4-deductible/year cap caps annual exposure at $2,000, but only 2 claims happened. 2014 claims don't affect 2013.\n\nExam key: Per-claim deductible × number of claims = annual out-of-pocket (up to the cap).",
+  },
+  {
+    id: 'q8-aids-hiv-not-discriminatory',
+    text: 'All are true statements regarding the underwriting process, EXCEPT:',
+    choices: {
+      A: 'The cost of any examination is paid for by the insurer',
+      B: 'The original application is the primary source of information used in the underwriting process',
+      C: 'AIDS and HIV virus exams can be conducted in a discriminatory fashion',
+      D: 'Signed consent from the applicant must be provided in order to test for AIDS and HIV virus',
+    },
+    correct: 'C',
+    explanation:
+      'HIV/AIDS testing must NOT be discriminatory. Insurer pays for exams. Application is the primary source. Written consent required for HIV testing.\n\nExam key: HIV testing in insurance = non-discriminatory + written consent required.',
+  },
+  {
+    id: 'q8-ss-not-dismemberment',
+    text: 'Which of the following does Social Security NOT provide benefits for?',
+    choices: {
+      A: 'Retirement',
+      B: 'Disability',
+      C: 'Dismemberment',
+      D: 'Survivorship',
+    },
+    correct: 'C',
+    explanation:
+      "OASDI = Old Age (retirement), Survivors, Disability Insurance. Dismemberment is covered by AD&D, accident policies, or workers' comp — not SS.\n\nExam key: Social Security = OASDI (retirement/survivors/disability). NOT dismemberment.",
+  },
+  {
+    id: 'q8-conditional-receipt-premium',
+    text: 'In order for coverage on a non-medical insurance application to take effect the same day, the producer must collect a signed application and',
+    choices: {
+      A: 'a Medical Information Report',
+      B: 'the initial premium',
+      C: 'Attending Physician Statement',
+      D: 'forward it immediately to the insurer',
+    },
+    correct: 'B',
+    explanation:
+      'A conditional receipt is triggered by a signed application + initial premium = interim coverage from the application date (subject to underwriting).\n\nExam key: Same-day coverage = signed application + initial premium = conditional receipt.',
+  },
+  {
+    id: 'q8-credit-life-term',
+    text: 'What type of life insurance are credit policies issued as?',
+    choices: {
+      A: 'Variable',
+      B: 'Whole',
+      C: 'Term',
+      D: 'Universal',
+    },
+    correct: 'C',
+    explanation:
+      'Credit life = decreasing term. The death benefit decreases with the loan balance. Creditor is beneficiary. Coverage cannot exceed the loan amount.\n\nExam key: Credit life = decreasing term, lender as beneficiary, limited to loan balance.',
+  },
+  {
+    id: 'q8-finra-variable',
+    text: 'In order to sell a(n) ________ Life policy, a producer is required to register with the Financial Industry Regulatory Authority (FINRA).',
+    choices: {
+      A: 'Variable',
+      B: 'Straight',
+      C: 'Term',
+      D: 'Adjustable',
+    },
+    correct: 'A',
+    explanation:
+      'Variable products are securities. Need state insurance license + FINRA Series 6/7 + broker-dealer registration.\n\nExam key: Variable = security = FINRA required.',
+  },
+  {
+    id: 'q8-401k-lump-sum-withholding',
+    text: 'An employee requested that the balance of her 401(k) account be sent directly to her in one lump sum. Upon receipt of the distribution, she immediately has the funds rolled over into an IRA. What is the tax consequence of the distribution sent to this employee?',
+    choices: {
+      A: 'Distribution is subject to a tax penalty',
+      B: 'Distribution is subject to capital gains tax',
+      C: 'Distribution is subject to ordinary income tax',
+      D: 'Distribution is subject to federal income tax withholding',
+    },
+    correct: 'D',
+    explanation:
+      'Direct distribution to employee = mandatory 20% federal withholding even if rolled over within 60 days. Direct trustee-to-trustee transfer avoids withholding.\n\nExam key: Indirect rollover = 20% mandatory federal withholding. Direct rollover = none.',
+  },
+  {
+    id: 'q8-ltc-rider-2-adls',
+    text: 'A long-term care rider in a life insurance policy pays a daily benefit in the event of which of the following?',
+    choices: {
+      A: 'Terminal illness',
+      B: 'Inability of the insured to maintain insurance premiums due to unemployment',
+      C: "Inability of the insured to perform more than 2 Activities of Daily Living (ADL's)",
+      D: 'Critical illness',
+    },
+    correct: 'C',
+    explanation:
+      'LTC benefits trigger when the insured can\'t perform 2+ of 6 ADLs (bathing, dressing, eating, toileting, transferring, continence) OR has severe cognitive impairment.\n\nExam key: LTC = 2 of 6 ADLs OR cognitive impairment.',
+  },
+  {
+    id: 'q8-hospital-indemnity-daily',
+    text: 'Which of the following BEST describes a Hospital Indemnity policy?',
+    choices: {
+      A: 'Coverage that replaces lost income due to hospitalization',
+      B: 'Coverage that pays for hospital room and board',
+      C: 'Coverage that pays a stated amount per day of a covered hospitalization',
+      D: 'Coverage that reimburses an insured for surgeon expenses',
+    },
+    correct: 'C',
+    explanation:
+      'Hospital Indemnity pays a fixed daily cash amount directly to the insured for each hospitalized day. Use it for any purpose. Supplemental coverage.\n\nExam key: Hospital Indemnity = flat daily benefit, paid to insured, any use.',
+  },
+  {
+    id: 'q8-dividend-accumulation-taxable',
+    text: 'A policyowner may generate taxable income from which of the following Dividend Options?',
+    choices: {
+      A: 'Cash',
+      B: 'Reduced Premium',
+      C: 'Accumulation at Interest',
+      D: 'Nonforfeiture',
+    },
+    correct: 'C',
+    explanation:
+      'Dividends themselves are not taxable (return of premium). Interest earned on dividends left to accumulate IS taxable as ordinary income.\n\nExam key: Dividends = not taxable; interest on accumulated dividends = taxable.',
+  },
+  {
+    id: 'q8-wl-not-partial-withdrawals',
+    text: 'Whole Life insurance policies are contractually guaranteed to provide each of the following, EXCEPT:',
+    choices: {
+      A: 'premiums that remain fixed for the life of the policy',
+      B: 'partial withdrawal features beyond a surrender charge period',
+      C: 'cash value that will ultimately replace the death benefit',
+      D: 'nonforfeiture benefit options',
+    },
+    correct: 'B',
+    explanation:
+      'Partial withdrawals are a Universal Life feature, not Whole Life. WL accesses cash via loans or surrender only.\n\nExam key: Whole Life = loans only; Universal Life = partial withdrawals.',
+  },
+  {
+    id: 'q8-preex-disclosed-12-month',
+    text: 'T was treated for an ailment 2 months prior to applying for a health insurance policy. This condition was noted on the application and the policy was issued shortly afterwards. How will the insurer likely consider this condition?',
+    choices: {
+      A: 'Insurer will permanently exclude the condition from the policy',
+      B: 'Insurer will require a higher deductible for any claims resulting from this condition',
+      C: 'Insurer is required to initially cover this pre-existing condition',
+      D: 'Insurer will likely treat as a pre-existing condition which may not be covered for one year',
+    },
+    correct: 'D',
+    explanation:
+      "Disclosed pre-existing condition = waiting period (commonly 12 months). After waiting period, covered like any condition. ACA major medical can't exclude pre-existing, but supplemental products (DI, LTC, etc.) still can.\n\nExam key: Disclosed pre-existing = up to 12-month waiting period.",
+  },
+  {
+    id: 'q8-wl-cash-value-borrow',
+    text: 'Which statement about a whole life policy is true?',
+    choices: {
+      A: 'Death benefit can usually be adjusted',
+      B: 'Cash value may be borrowed against',
+      C: 'Premiums are flexible',
+      D: 'Beneficiary may be changed only with the consent of the premium payor',
+    },
+    correct: 'B',
+    explanation:
+      'WL = fixed premiums, fixed death benefit, guaranteed cash value (loanable). Policyowner controls beneficiary changes (unless irrevocable).\n\nExam key: Whole Life = everything fixed; access cash value via loans.',
+  },
+  {
+    id: 'q8-stoli-third-party',
+    text: 'Stranger-Owned Life Insurance (STOLI) is when a person purchases life insurance only to sell to a(n):',
+    choices: {
+      A: 'relative with insurable interest',
+      B: 'sole proprietor with insurable interest',
+      C: 'underwriter',
+      D: 'third-party with no insurable interest',
+    },
+    correct: 'D',
+    explanation:
+      'STOLI is illegal. Buying life insurance with intent to sell to a third-party investor lacking insurable interest. Different from legitimate viatical/life settlements (existing policies sold by terminally/chronically ill insureds).\n\nExam key: STOLI = stranger-owned, no insurable interest at inception = illegal.',
+  },
+  {
+    id: 'q8-cola-rider-death-benefit',
+    text: 'A Cost of Living rider gives the insured',
+    choices: {
+      A: 'decreasing premiums',
+      B: 'tax incentives',
+      C: 'additional death benefits',
+      D: 'monthly income',
+    },
+    correct: 'C',
+    explanation:
+      'COLA rider increases the death benefit periodically (tied to CPI) to keep pace with inflation. No proof of insurability needed for increases. Premium rises with each increase.\n\nExam key: COLA = inflation-adjusted death benefit increases.',
+  },
+  {
+    id: 'q8-inspection-report-phone',
+    text: 'Information obtained from a phone conversation to the proposed insured can be found in which of these reports?',
+    choices: {
+      A: 'Inspection report',
+      B: 'MIB report',
+      C: "Attending physician's report",
+      D: "Agent's report",
+    },
+    correct: 'A',
+    explanation:
+      "Inspection report = third-party investigator including phone interviews with insured, neighbors, employers covering lifestyle, finances, character.\n\nExam key: Inspection = phone interviews + lifestyle investigation. APS = doctor's written report. MIB = coded medical info.",
+  },
+  {
+    id: 'q8-hospitalization-not-surgical',
+    text: 'Which of the following services is NOT included under hospitalization expense coverage?',
+    choices: {
+      A: 'surgical fees',
+      B: 'daily room and board',
+      C: 'intensive care',
+      D: 'miscellaneous expenses',
+    },
+    correct: 'A',
+    explanation:
+      "Surgical fees are covered under a separate Surgical Expense policy. Hospitalization Expense covers room/board, ICU, hospital miscellaneous (lab, x-ray, drugs).\n\nExam key: Hospital = building/stay; Surgical = doctor's fees.",
+  },
+  {
+    id: 'q8-fcra-inspection',
+    text: 'Which Federal law allows an insurer to obtain an inspection report on a potential insured?',
+    choices: {
+      A: 'Fair Credit Reporting Act',
+      B: 'Medical Information Bureau Act',
+      C: 'Medical Information Act',
+      D: 'Freedom of Information Act',
+    },
+    correct: 'A',
+    explanation:
+      'FCRA governs how insurers obtain consumer/inspection reports. Requires written notice to applicant, right to copy, right to know about adverse decisions, ability to dispute inaccuracies.\n\nExam key: FCRA = governs inspection/consumer reports. Insurer must notify applicant.',
+  },
+  {
+    id: 'q8-key-person-abc-owner',
+    text: 'C is a key employee at ABC Incorporated. If a Key Employee life policy is purchased on her life, which of these statements would be true?',
+    choices: {
+      A: 'ABC is the policyowner, C is the insured, and her husband is the beneficiary',
+      B: 'C is the policyowner, the insured, and the beneficiary',
+      C: 'C is the policyowner and the insured, and ABC is the beneficiary',
+      D: 'ABC is the policyowner, C is the insured, and ABC is the beneficiary',
+    },
+    correct: 'D',
+    explanation:
+      'Key Person life: business owns, pays premiums, is beneficiary. Employee is just the insured life. Premiums not deductible; death benefit tax-free to business.\n\nExam key: Key Person = business owns/pays/collects; employee is insured.',
+  },
+  {
+    id: 'q8-renewable-term-insured',
+    text: 'Who has the option to renew a Renewable Term policy?',
+    choices: {
+      A: 'Agency',
+      B: 'Insured',
+      C: 'Agent',
+      D: 'Beneficiary',
+    },
+    correct: 'B',
+    explanation:
+      'Renewable Term gives the insured the right to renew without evidence of insurability. Premium increases at each renewal based on attained age.\n\nExam key: Renewable Term = insured\'s option, no health questions, premiums rise.',
+  },
+  {
+    id: 'q8-substandard-extra-premium',
+    text: "An underwriter determines that a life insurance applicant's risk should be reclassified due to a health issue. This policy may be issued with a(n):",
+    choices: {
+      A: 'extended Contestable period',
+      B: 'extra premium',
+      C: 'Concealment clause',
+      D: 'exclusion for the medical condition',
+    },
+    correct: 'B',
+    explanation:
+      'Substandard options: rate up (extra premium), exclusion rider, lower face amount, or decline. Extra premium is the most common.\n\nExam key: Substandard = higher premium (rate up) or exclusion or decline.',
+  },
+  {
+    id: 'q8-marital-deduction',
+    text: 'Rick recently died and left behind an individual IRA account in his name. His widow was forwarded the balance of the IRA. The widow qualifies for the:',
+    choices: {
+      A: 'capital gains tax rate',
+      B: 'death benefits',
+      C: 'marital deduction',
+      D: 'Section 1035 exchange',
+    },
+    correct: 'C',
+    explanation:
+      'Marital deduction = unlimited tax-free transfer of assets between spouses at death. Widow can also roll the IRA into her own to defer taxes.\n\nExam key: Spousal inheritance = marital deduction (unlimited, estate tax-free).',
+  },
+  {
+    id: 'q8-grace-period-premium-deduct',
+    text: 'M had an annual life insurance premium payment due January 1. She died January 10 without making the premium payment. What action will the insurer take?',
+    choices: {
+      A: 'Subtract past due premium from cash value',
+      B: "Collect premium from M's estate",
+      C: 'Deny the claim',
+      D: 'Pay face amount minus the past due premium',
+    },
+    correct: 'D',
+    explanation:
+      'Death within the 31-day grace period = claim must be paid. Unpaid premium is deducted from the death benefit.\n\nExam key: Death in grace period = paid minus past-due premium.',
+  },
+  {
+    id: 'q8-ltc-goi-buy-more',
+    text: 'The guarantee of insurability option provides a long-term care policyowner the ability to:',
+    choices: {
+      A: 'buy additional coverage at a later date',
+      B: "add the insured's spouse at a later date",
+      C: 'pay the same premium for life',
+      D: 'cancel the policy at anytime',
+    },
+    correct: 'A',
+    explanation:
+      'GOI rider lets the policyowner buy additional coverage at specified future dates without evidence of insurability. Premium based on attained age.\n\nExam key: GOI = buy more coverage later, no health questions.',
+  },
+];
+
+const CHAPTER_9: SampleQuestion[] = [
+  {
+    id: 'q9-incontestable-contest-period',
+    text: 'The incontestable clause allows an insurer to:',
+    choices: {
+      A: 'contest a claim during the Contestable Period',
+      B: 'disallow a change of beneficiary during the Contestable period',
+      C: 'disallow a change of ownership throughout the Contestable period',
+      D: 'contest a claim at anytime if the cause of death was accidental',
+    },
+    correct: 'A',
+    explanation:
+      'Insurer can contest based on misrepresentation only during the contestable period (typically 2 years). After that = incontestable; insurer must pay. Fraud may be contestable beyond 2 years in some states.\n\nExam key: Incontestable = 2 years; insurer locked in afterward.',
+  },
+  {
+    id: 'q9-dividend-interest-taxed',
+    text: 'How are policyowner dividends treated in regards to income tax?',
+    choices: {
+      A: 'Taxed as ordinary income',
+      B: 'Dividends are not taxable',
+      C: 'Interest on accumulations is taxed',
+      D: 'Taxed as capital gains',
+    },
+    correct: 'C',
+    explanation:
+      'Dividends are generally a return of premium and not taxable. BUT interest earned on accumulated dividends IS taxable, and dividends exceeding total premiums paid are also taxable.\n\nExam key: Dividends generally not taxable; interest on accumulations IS taxed; excess over premiums = taxable.',
+  },
+  {
+    id: 'q9-equity-indexed-not-flexible',
+    text: 'All of these statements about Equity Indexed Life Insurance are correct, EXCEPT:',
+    choices: {
+      A: 'Tied to an equity index such as the S&P 500',
+      B: "If the gain on the index goes beyond the policy's minimum rate of return, the cash value will mirror that of the index",
+      C: 'The premiums can be lowered or raised, based on investment performance',
+      D: 'Cash value has a minimum rate of accumulation',
+    },
+    correct: 'C',
+    explanation:
+      'Equity Indexed Life has FIXED premiums — not flexible (that\'s Universal Life). Cash value is linked to an index with a floor (minimum) and ceiling (cap).\n\nExam key: Equity Indexed Life = fixed premiums + indexed cash value with floor and cap.',
+  },
+  {
+    id: 'q9-policy-loan-provision',
+    text: 'A provision in a life insurance policy that pays the policyowner an amount that does not surpass the guaranteed cash value is called the:',
+    choices: {
+      A: 'Policy Loan provision',
+      B: 'Accelerated Benefits provision',
+      C: 'Consideration clause',
+      D: 'Automatic Premium Loan provision',
+    },
+    correct: 'A',
+    explanation:
+      'Policy Loan provision = borrow up to (not exceeding) the guaranteed cash value at a stated rate. Unpaid balance + interest are deducted from the death benefit.\n\nExam key: Policy Loan = borrow against cash value, capped at cash value.',
+  },
+  {
+    id: 'q9-di-employer-paid-taxable',
+    text: "T is receiving $3,000/month from a Disability Income policy in which T's employer had paid the premiums. How are the $3,000 benefit payments taxable?",
+    choices: {
+      A: 'Benefits are tax-free to T',
+      B: 'Benefits are taxable to T',
+      C: "Benefits are taxable to T's employer",
+      D: 'Benefits are partially taxable to T',
+    },
+    correct: 'B',
+    explanation:
+      'Employer paid premiums = benefits fully taxable to employee. Employee paid premiums with after-tax dollars = benefits tax-free. Shared = partially taxable.\n\nExam key: Who paid the premiums determines who pays the tax on benefits.',
+  },
+  {
+    id: 'q9-patriot-act-10000',
+    text: 'Under the USA Patriot Act, insurers are required to report receipt of cash payments in excess of:',
+    choices: {
+      A: '$10,000',
+      B: '$5,000',
+      C: '$2,500',
+      D: '$7,500',
+    },
+    correct: 'A',
+    explanation:
+      'USA Patriot Act requires insurers to report cash payments over $10,000 to FinCEN. Structuring (breaking up payments to avoid reporting) is also illegal.\n\nExam key: $10,000 = reporting threshold (same as IRS/bank CTR).',
+  },
+  {
+    id: 'q9-mib-not-notify-declination',
+    text: 'A prepaid application for individual Disability Income insurance was recently submitted to an insurer. When the insurer received the Medical Information Bureau (MIB) report, the report showed that the applicant had suffered a stroke 18 months ago, something that was not disclosed on the application. Which of the following actions would the insurance company NOT take?',
+    choices: {
+      A: 'Send a notice to the agent that the applicant was declined',
+      B: 'Send a notice to the applicant that the coverage was declined',
+      C: 'Send a notice to the MIB that the applicant was declined',
+      D: 'Send the initial premium back to the applicant',
+    },
+    correct: 'C',
+    explanation:
+      'MIB receives reports of significant medical conditions, NOT underwriting decisions. Declinations are never reported to MIB.\n\nExam key: MIB = medical info only, NOT declinations.',
+  },
+  {
+    id: 'q9-major-medical-2100',
+    text: 'Q is hospitalized for 3 days and receives a bill for $10,100. Q has a Major Medical policy with a $100 deductible and 80/20 coinsurance. How much will Q be responsible for paying on this claim?',
+    choices: {
+      A: '$100',
+      B: '$2,020',
+      C: '$2,000',
+      D: '$2,100',
+    },
+    correct: 'D',
+    explanation:
+      '$10,100 − $100 deductible = $10,000. Insurer pays 80% ($8,000), insured pays 20% ($2,000) + deductible ($100) = $2,100.\n\nExam key: Total OOP = deductible + coinsurance share of remainder.',
+  },
+  {
+    id: 'q9-exclusion-provision',
+    text: 'In a life insurance policy, which feature states that the policy will not cover certain risks?',
+    choices: {
+      A: 'Ejection',
+      B: 'Exclusion',
+      C: 'Expulsion',
+      D: 'Exception',
+    },
+    correct: 'B',
+    explanation:
+      'Exclusions identify risks, conditions, or causes specifically not covered. Common life exclusions: war, aviation (non-commercial), suicide (within 2 years), felony participation.\n\nExam key: Exclusion = carved-out, never covered.',
+  },
+  {
+    id: 'q9-principal-not-authority',
+    text: 'Which of these is NOT a type of agent authority?',
+    choices: {
+      A: 'Principal',
+      B: 'Apparent',
+      C: 'Express',
+      D: 'Implied',
+    },
+    correct: 'A',
+    explanation:
+      'Three types: Express (stated in contract), Implied (reasonably assumed), Apparent (public perception). Principal = the insurer that grants authority, not a type of authority.\n\nExam key: Three authorities = Express, Implied, Apparent. Principal = the boss.',
+  },
+  {
+    id: 'q9-delivery-except-hipaa',
+    text: 'Upon delivery of a rated life insurance policy, the Producer must obtain each of the following, EXCEPT:',
+    choices: {
+      A: 'Signed statement of Good Health',
+      B: 'Signed amendment',
+      C: 'The required premium',
+      D: 'Signed HIPAA disclosure',
+    },
+    correct: 'D',
+    explanation:
+      'HIPAA disclosure is obtained at application, not delivery. At delivery: statement of good health (if no premium at app), signed amendment (if policy issued differently), required premium (if not collected at app).\n\nExam key: HIPAA = application time. Delivery = good health, amendment, premium.',
+  },
+  {
+    id: 'q9-conditional-receipt-coverage',
+    text: 'T is given a receipt after completing a life insurance application and paying the initial premium. Under this situation, T\'s coverage is',
+    choices: {
+      A: "conditional, depending on the insurer's underwriting guidelines",
+      B: 'guaranteed, no matter what is found during the underwriting process',
+      C: 'effective upon completion of the Free-Look period',
+      D: 'effective upon delivery of the policy',
+    },
+    correct: 'A',
+    explanation:
+      'Conditional receipt = interim coverage from app date, subject to underwriting approval as a standard risk. If approved, backdates to app date. If declined, premium refunded.\n\nExam key: Conditional receipt = covered if underwriting approves.',
+  },
+  {
+    id: 'q9-insuring-clause-promise-pay',
+    text: "In a Life insurance contract, an insurance company's promise to pay stated benefits is called the:",
+    choices: {
+      A: 'Consideration clause',
+      B: 'Insuring clause',
+      C: "Owner's rights",
+      D: 'Entire Contract',
+    },
+    correct: 'B',
+    explanation:
+      "Insuring clause = the insurer's promise to pay the death benefit in exchange for premium. Consideration = what each party gives. Entire Contract = policy + application = complete contract.\n\nExam key: Insuring clause = insurer's core promise to pay.",
+  },
+  {
+    id: 'q9-limited-pay-life',
+    text: "Life insurance that covers an insured's whole life with level premiums paid over a limited time is called:",
+    choices: {
+      A: 'Joint Life',
+      B: 'Limited Pay Life',
+      C: 'Renewable Term',
+      D: 'Adjustable Life',
+    },
+    correct: 'B',
+    explanation:
+      "Limited Pay Life = WL where premiums are paid over a shorter period (10/20/65), but coverage lasts for life. Premiums are higher than straight WL. Policy is fully paid-up after the payment period.\n\nExam key: Limited Pay = short premium period + lifetime coverage.",
+  },
+  {
+    id: 'q9-part-b-not-inpatient',
+    text: 'Medicare Part B does NOT cover:',
+    choices: {
+      A: 'physician and surgeon services',
+      B: 'medical equipment rental',
+      C: 'occupational therapy',
+      D: 'inpatient hospital services',
+    },
+    correct: 'D',
+    explanation:
+      'Part A = inpatient (hospital, SNF, hospice, home health). Part B = outpatient (physician, equipment, therapy, preventive).\n\nExam key: Part A = Admitted (inpatient); Part B = Bills (outpatient/doctor).',
+  },
+  {
+    id: 'q9-time-of-payment-not-alter',
+    text: 'Which of the following actions will an insurance company most likely NOT take if an applicant, who has diabetes, applies for a Disability Income policy?',
+    choices: {
+      A: 'Issue the policy with an altered Time of Payment of Claims provision',
+      B: 'Issue the policy with a rating',
+      C: 'Decline the applicant',
+      D: 'Issue the policy with a diabetes exclusion',
+    },
+    correct: 'A',
+    explanation:
+      'Time of Payment of Claims is a mandatory provision and cannot be altered by the insurer. Insurer CAN: rate up, decline, add exclusion rider.\n\nExam key: Mandatory provisions = untouchable. Underwriting affects premiums/scope, not required clauses.',
+  },
+  {
+    id: 'q9-joint-life-first',
+    text: 'What type of life policy covers two lives and pays the face amount after the first one dies?',
+    choices: {
+      A: 'Family Income Policy',
+      B: 'Joint Life Policy',
+      C: 'Group Life',
+      D: 'Last Survivor Policy',
+    },
+    correct: 'B',
+    explanation:
+      "Joint Life pays on the FIRST insured's death. Last Survivor pays on the LAST death. Joint Life is often used for business buy-sell; Last Survivor for estate planning.\n\nExam key: Joint = first to die; Survivorship = last to die.",
+  },
+  {
+    id: 'q9-80-vested-20-forfeit',
+    text: 'Tom has a qualified retirement plan with his employer that is currently considered to be 80% "vested". How can this be interpreted?',
+    choices: {
+      A: '80% of the funds are invested in a separate account',
+      B: "If Tom's employment is terminated, 80% of the funds would be forfeited",
+      C: '20% of the funds are subject to taxes',
+      D: "If Tom's employment is terminated, 20% of the funds would be forfeited",
+    },
+    correct: 'D',
+    explanation:
+      "Vesting = ownership of employer contributions. 80% vested = keep 80% of employer contributions, forfeit 20% if leaving. Employee's own contributions are always 100% vested.\n\nExam key: Vested % = what you KEEP of employer contributions.",
+  },
+  {
+    id: 'q9-modified-whole-life',
+    text: 'K buys a policy where the premium stays fixed for the first 5 years. The premium then increases in year 6 and stays level thereafter, all the while the death benefit remains the same. What kind of policy is this?',
+    choices: {
+      A: 'Adjustable Life',
+      B: 'Variable Life',
+      C: 'Modified Whole Life',
+      D: 'Graded Premium Whole Life',
+    },
+    correct: 'C',
+    explanation:
+      'Modified Whole Life = lower premium for an initial period (3-5 years), then a single step up to a higher level premium for life. Graded = gradual increases over more years.\n\nExam key: Modified = one step up; Graded = gradual staircase.',
+  },
+  {
+    id: 'q9-survivorship-policy',
+    text: 'What type of life policy covers two people and pays upon the death of the last insured?',
+    choices: {
+      A: 'Survivorship',
+      B: 'Joint',
+      C: 'Adjustable',
+      D: 'Shared',
+    },
+    correct: 'A',
+    explanation:
+      'Survivorship (Last Survivor) pays only after both insureds die. Used for estate planning — covers estate tax due on the second death.\n\nExam key: Survivorship = both must die first; estate planning tool.',
+  },
+  {
+    id: 'q9-key-person-architect',
+    text: 'An architecture firm would stand to lose a lot of money in the event of the death of its project manager. Which type of policy should the firm purchase on its project manager?',
+    choices: {
+      A: 'Key Person insurance',
+      B: 'Executive insurance',
+      C: 'Universal life insurance',
+      D: 'Graded insurance',
+    },
+    correct: 'A',
+    explanation:
+      'Key Person policy: business owns/pays/is beneficiary; key employee is the insured. Protects the business from financial loss.\n\nExam key: Business + critical employee = Key Person insurance.',
+  },
+  {
+    id: 'q9-conversion-provision',
+    text: 'When a policyowner exchanges a term policy for a whole life policy without providing proof of good health, which of these apply?',
+    choices: {
+      A: 'Incontestable period',
+      B: 'Conversion provision',
+      C: 'Extended term option',
+      D: '1035 Exchange',
+    },
+    correct: 'B',
+    explanation:
+      'Conversion provision = convertible term policyholder converts to permanent without evidence of insurability. Premium is based on attained age at conversion.\n\nExam key: Term to permanent without health proof = conversion provision.',
+  },
+  {
+    id: 'q9-irrevocable-beneficiary-consent',
+    text: 'T is the policyowner for a Life Insurance policy with an Irrevocable beneficiary designation. If T wishes to change the beneficiary, T must obtain permission from the',
+    choices: {
+      A: 'agent',
+      B: 'Commissioner of Insurance',
+      C: 'beneficiary',
+      D: 'payor',
+    },
+    correct: 'C',
+    explanation:
+      "Irrevocable beneficiary has a vested interest. Policyowner needs the beneficiary's written consent to change beneficiary, take loans, surrender, or assign.\n\nExam key: Irrevocable beneficiary = locks the policy; consent required for changes.",
+  },
+  {
+    id: 'q9-gir-future-dates',
+    text: 'When does a Guaranteed Insurability Rider allow the insured to buy additional coverage?',
+    choices: {
+      A: 'at future dates specified in the contract with no evidence of insurability required',
+      B: 'at future dates specified in the contract with proof of insurability required',
+      C: 'at any time while policy is active',
+      D: '10 year increments',
+    },
+    correct: 'A',
+    explanation:
+      'GI Rider = buy more coverage at predetermined dates (age milestones or life events) without insurability proof. Missed option = forfeited.\n\nExam key: GI Rider = specified dates, no health questions, miss it and lose it.',
+  },
+  {
+    id: 'q9-contracts-of-adhesion',
+    text: 'Insurance policies are offered on a "take it or leave it" basis, which make them:',
+    choices: {
+      A: 'Aleatory Contracts',
+      B: 'Conditional Contracts',
+      C: 'Unilateral Contracts',
+      D: 'Contracts of Adhesion',
+    },
+    correct: 'D',
+    explanation:
+      'Adhesion = drafted entirely by one party, presented take-it-or-leave-it. Aleatory = unequal exchange. Conditional = conditions for payment. Unilateral = only insurer makes an enforceable promise.\n\nExam key: Adhesion = no negotiation, stuck with their terms.',
+  },
+  {
+    id: 'q9-child-term-rider',
+    text: 'S is covered by a whole life policy. Which insurance product can cover his children?',
+    choices: {
+      A: 'Assignment provision',
+      B: 'Child term rider',
+      C: 'Payor benefit',
+      D: 'Accelerated benefit rider',
+    },
+    correct: 'B',
+    explanation:
+      'Child Term Rider adds term coverage for all eligible children under one flat premium. Convertible to permanent at age limit, no evidence needed.\n\nExam key: Child Term Rider = covers all kids under one rider.',
+  },
+  {
+    id: 'q9-insuring-clause-health-services',
+    text: 'Which of the following health insurance policy provisions specifies the health care services a policy will provide?',
+    choices: {
+      A: 'Consideration clause',
+      B: 'Insuring clause',
+      C: 'Benefit clause',
+      D: 'Usual, Customary, and Reasonable clause',
+    },
+    correct: 'B',
+    explanation:
+      'Insuring clause identifies the specific services/conditions covered by the policy. Benefit clause = dollar amounts payable. UCR limits reimbursement to usual/customary/reasonable.\n\nExam key: Insuring clause (health) = what services are covered; Benefit clause = dollar amounts.',
+  },
+  {
+    id: 'q9-variable-wl-both',
+    text: 'Variable Whole Life Insurance can be described as:',
+    choices: {
+      A: 'the insurance company assumes the investment risk',
+      B: 'an insurance product only',
+      C: 'both an insurance and securities product',
+      D: 'a securities product only',
+    },
+    correct: 'C',
+    explanation:
+      'Variable WL = separate account investments + life coverage. POLICYOWNER bears investment risk. Requires state insurance license + FINRA registration.\n\nExam key: Variable = dual product (insurance + securities) = dual licensing.',
+  },
+  {
+    id: 'q9-beneficiary-no-signature',
+    text: 'Who is NOT required to sign a health insurance application?',
+    choices: {
+      A: 'Producer',
+      B: 'Beneficiary',
+      C: 'Adult insured',
+      D: 'Policyowner',
+    },
+    correct: 'B',
+    explanation:
+      'Beneficiary has no contractual role in the application. Required signatures: producer, adult insured, policyowner (if different from insured).\n\nExam key: Beneficiary just receives benefits — no signature on the application.',
+  },
+  {
+    id: 'q9-noncancellable-di',
+    text: 'A Disability Income policy that only the policyowner can terminate and which the rates will never go up is considered to be',
+    choices: {
+      A: 'Optionally Renewable',
+      B: 'Guaranteed Renewable',
+      C: 'Noncancellable',
+      D: 'Cancellable',
+    },
+    correct: 'C',
+    explanation:
+      "Noncancellable = insurer can't cancel, can't raise rates, can't change provisions. Strongest possible. Guaranteed Renewable = can't cancel but rates can rise by class.\n\nExam key: Noncancellable = locked rates AND continuation; Guaranteed Renewable = continuation only.",
+  },
+  {
+    id: 'q9-adjustable-life-flexible',
+    text: 'Which of these needs is satisfied by Adjustable Life insurance?',
+    choices: {
+      A: "Insured's need for flexible premiums",
+      B: "Insured's need for flexible nonforfeiture options",
+      C: "Insured's need for level death benefits",
+      D: "Insured's need for level premiums",
+    },
+    correct: 'A',
+    explanation:
+      'Adjustable Life = flexible premiums, flexible face amount, flexible premium payment period, flexible policy period (term vs. permanent).\n\nExam key: Adjustable Life = most flexible traditional policy.',
+  },
+];
+
+const CHAPTER_10: SampleQuestion[] = [
+  {
+    id: 'q10-boe-utilities-rent',
+    text: 'A Business Overhead Expense policy would cover which of the following if a business owner becomes disabled?',
+    choices: {
+      A: 'Contributions to employee retirement plans',
+      B: 'Meals and entertainment',
+      C: "Owner's salary",
+      D: 'Utilities and office rent',
+    },
+    correct: 'D',
+    explanation:
+      "BOE = fixed business overhead (rent, utilities, employee salaries, insurance premiums, leased equipment). Does NOT cover owner's salary (separate DI for that).\n\nExam key: BOE = lights on + staff paid; not owner's personal income.",
+  },
+  {
+    id: 'q10-level-premium-fixed',
+    text: 'A level premium indicates:',
+    choices: {
+      A: 'the premium is fixed for the entire duration of the contract',
+      B: 'the premium is fixed for a period stated in the contract, then becomes variable',
+      C: 'the premium can only be changed with the consent of the insurer',
+      D: "the premium stays level until the policy's renewal date",
+    },
+    correct: 'A',
+    explanation:
+      'Level premium = same amount the entire life of the policy. Early years overpay relative to risk; later years underpay. Overpayment builds cash value in permanent policies.\n\nExam key: Level = flat line, same amount every year.',
+  },
+  {
+    id: 'q10-convertible-term-cost',
+    text: 'C is trying to determine whether to convert her convertible term life policy to whole life insurance using her original age or attained age. What factor would affect her decision the most?',
+    choices: {
+      A: 'The assignment of ownership',
+      B: 'The nonforfeiture options',
+      C: 'The contestable period',
+      D: 'The cost',
+    },
+    correct: 'D',
+    explanation:
+      'Original age conversion = lower ongoing premium but requires back-payment of premium difference. Attained age = higher premium but no back-payment. Purely a financial trade-off.\n\nExam key: Original age cheaper long-term + back-payment; attained age higher premium + no catch-up.',
+  },
+  {
+    id: 'q10-disability-buy-sell',
+    text: 'Which contract permits the remaining partners to buy-out the interest of a disabled business partner?',
+    choices: {
+      A: 'Business Continuation',
+      B: 'Disability Buy-Sell',
+      C: 'Key Person Disability',
+      D: 'Group Disability',
+    },
+    correct: 'B',
+    explanation:
+      "Disability Buy-Sell funds the partner buyout when one becomes permanently disabled. Key Person Disability reimburses the business for financial loss (no ownership transfer).\n\nExam key: Disability Buy-Sell = ownership transfers; Key Person = business compensated.",
+  },
+  {
+    id: 'q10-trustee-group-employee',
+    text: 'Under a trustee group life policy, who would be eligible for a certificate of coverage?',
+    choices: {
+      A: 'Employer',
+      B: 'Corporation',
+      C: 'Labor union',
+      D: 'Employee',
+    },
+    correct: 'D',
+    explanation:
+      'Trustee group = trust holds master policy. Employees (union members) get certificates of coverage. Taft-Hartley structure.\n\nExam key: Group life individuals always get certificates regardless of who holds the master policy.',
+  },
+  {
+    id: 'q10-change-occupation-less-hazard',
+    text: 'T owns an Accident & Health policy and notifies her insurance company that she has chosen a less hazardous occupation. Under the Change of Occupation provision, which of the following actions may her insurance company take?',
+    choices: {
+      A: "Decrease her policy's coverage amount",
+      B: "Increase her policy's coverage amount",
+      C: 'Nothing',
+      D: 'Allow her to take a tax deduction on unearned premiums',
+    },
+    correct: 'B',
+    explanation:
+      'Less hazardous = better risk. Insurer may increase coverage for same premium OR reduce premium for same coverage. More hazardous = reduce coverage to reflect risk.\n\nExam key: Less hazardous = more coverage/lower premium; more hazardous = reduced coverage.',
+  },
+  {
+    id: 'q10-claim-forms-any-form',
+    text: "What should an insured do if the insurer does not send claims forms within the time period set forth in a health policy's Claims Forms provision?",
+    choices: {
+      A: 'Wait for the claim form to arrive',
+      B: 'File a lawsuit',
+      C: 'Resubmit the request for a claim form',
+      D: 'Submit the claim in any form',
+    },
+    correct: 'D',
+    explanation:
+      "Claim Forms provision: insurer must provide forms within 15 days. If they don't, the insured may submit the claim in any written form. No penalty on the insured.\n\nExam key: No forms in 15 days = submit in any written form.",
+  },
+  {
+    id: 'q10-gi-rider-di',
+    text: 'What does a Guaranteed Insurability rider provide a Disability Income policyowner?',
+    choices: {
+      A: 'The guarantee that the policy will never be cancelled',
+      B: 'The ability to periodically increase the amount of coverage only with evidence of insurability',
+      C: 'The guarantee that the premiums will never increase',
+      D: 'The ability to periodically increase the amount of coverage without evidence of insurability',
+    },
+    correct: 'D',
+    explanation:
+      'GI rider on DI = increase monthly benefit at specified intervals without proving good health. Premium based on attained age. Miss the option = forfeit it.\n\nExam key: GI rider DI = scheduled benefit increases, no health questions.',
+  },
+  {
+    id: 'q10-add-primary-survives',
+    text: "P and Q are married and have three children. P is the primary beneficiary on Q's Accidental Death and Dismemberment (AD&D) policy and Q's sister R is the contingent beneficiary. P, Q, and R are involved in a car accident and Q and R are killed instantly. The Accidental Death benefits will be paid to:",
+    choices: {
+      A: 'P only',
+      B: "Q's estate",
+      C: "P and Q's estate",
+      D: "R's estate",
+    },
+    correct: 'A',
+    explanation:
+      "Primary beneficiary (P) is alive and collects the death benefit. Contingent (R) only triggers if primary cannot collect. R's death is irrelevant since P survived.\n\nExam key: Contingent activates only if primary unavailable; primary survives = contingent never matters.",
+  },
+  {
+    id: 'q10-dental-not-income',
+    text: 'Dental care coverage is designed to cover the costs of all of the following EXCEPT:',
+    choices: {
+      A: 'Orthodontia',
+      B: 'Preventative care',
+      C: 'loss of income',
+      D: 'Oral Surgery',
+    },
+    correct: 'C',
+    explanation:
+      'Dental covers dental services only (preventive, basic restorative, oral surgery, orthodontia). Loss of income = Disability Income coverage.\n\nExam key: Dental = mouth only; income = DI policy.',
+  },
+  {
+    id: 'q10-di-overseas',
+    text: 'K becomes ill after traveling overseas and is unable to work for 3 months. What kind of policy would cover her loss of income?',
+    choices: {
+      A: 'Disability Income',
+      B: 'Travel',
+      C: 'Indemnity',
+      D: 'Major Medical',
+    },
+    correct: 'A',
+    explanation:
+      'DI replaces lost income when can\'t work due to illness/injury. Foreign illness still qualifies if it meets the policy\'s disability definition. Pays a monthly benefit (typically 60-70% of pre-disability income).\n\nExam key: Can\'t work = lost income = DI policy.',
+  },
+  {
+    id: 'q10-annuity-surrender-value',
+    text: 'A contract owner terminates an annuity before the income payment period begins. The owner will then receive',
+    choices: {
+      A: 'the current contract surrender value',
+      B: 'the premiums paid to date',
+      C: 'nothing',
+      D: 'half of the current surrender value',
+    },
+    correct: 'A',
+    explanation:
+      'Annuity surrendered during accumulation = current surrender value (accumulated value minus surrender charges). May owe ordinary income tax on gains + 10% penalty if under 59½.\n\nExam key: Surrender = cash value minus surrender charges.',
+  },
+  {
+    id: 'q10-group-health-no-individual-policy',
+    text: 'All of the following statements regarding group health insurance is true, EXCEPT:',
+    choices: {
+      A: 'A master contract is issued for the group',
+      B: 'Premiums are usually determined by the claims experience of the group',
+      C: 'Group health insurance premiums are typically lower than individual health insurance premiums',
+      D: 'An individual policy is given to each member',
+    },
+    correct: 'D',
+    explanation:
+      'Group health = individuals get certificates of coverage, NOT individual policies. Master policy goes to the group sponsor.\n\nExam key: Group = one master + member certificates.',
+  },
+  {
+    id: 'q10-insuring-clause-losses',
+    text: 'The ________ clause identifies which losses resulting from an accident or sickness are insured by the policy.',
+    choices: {
+      A: 'Identification',
+      B: 'Payment',
+      C: 'Benefit',
+      D: 'Insuring',
+    },
+    correct: 'D',
+    explanation:
+      "Insuring clause identifies what losses/conditions are covered. Defines what is and isn't covered under the contract.\n\nExam key: Insuring clause = the what-we-cover promise.",
+  },
+  {
+    id: 'q10-consideration-pay-death-benefit',
+    text: 'What is the consideration given by an insurer in the Consideration clause of a life policy?',
+    choices: {
+      A: "Promise to accept an insured's assignment of benefits",
+      B: 'Promise to not raise premiums',
+      C: 'Promise to pay a death benefit to a named beneficiary',
+      D: 'Promise to never cancel coverage',
+    },
+    correct: 'C',
+    explanation:
+      'Consideration exchange: insured gives application + premium; insurer gives promise to pay the death benefit to the named beneficiary.\n\nExam key: Insurer\'s consideration = pay the death benefit.',
+  },
+  {
+    id: 'q10-di-elimination-period',
+    text: 'R becomes disabled and owns an individual Disability Income policy. When is R eligible to receive disability benefits?',
+    choices: {
+      A: 'Upon satisfying the elimination period requirement',
+      B: 'Upon being examined by a physician',
+      C: 'Upon being laid off from employer',
+      D: 'Upon paying a deductible',
+    },
+    correct: 'A',
+    explanation:
+      'Elimination period = time the disability must continue before benefits begin (typical: 30/60/90/180 days). Like a time deductible. Longer EP = lower premium.\n\nExam key: DI benefits begin AFTER the elimination period is satisfied.',
+  },
+  {
+    id: 'q10-preex-5-years-incontestable',
+    text: 'A Disability Income policyowner recently submitted a claim for a chronic neck problem that has now resulted in total disability. The original neck injury occurred before the application was taken 5 years prior. The neck injury was never disclosed to the insurer at the time of application. How will the insurer handle this claim?',
+    choices: {
+      A: 'Claim will be paid and coverage will remain in force',
+      B: 'Claim will be denied and coverage will be cancelled',
+      C: 'Claim will be denied, the coverage cancelled, and all premiums paid will be refunded',
+      D: 'Claim will be denied and coverage will remain in force',
+    },
+    correct: 'A',
+    explanation:
+      'After the 2-year contestable period, the policy becomes incontestable — insurer cannot deny or cancel for misrepresentation or concealment, even if the claim is related to the concealed condition. 5 years = past contestable.\n\nExam key: After 2 years = incontestable = claim paid, no rescission.',
+  },
+  {
+    id: 'q10-guaranteed-renewable-nonpayment',
+    text: 'Under a Guaranteed Renewable health insurance policy, the insurer',
+    choices: {
+      A: 'is permitted to require proof of insurability upon policy renewal',
+      B: 'may cancel the policy for nonpayment only',
+      C: 'may refuse to continue coverage upon policy renewal',
+      D: 'will typically decrease the premium upon policy renewal',
+    },
+    correct: 'B',
+    explanation:
+      'Guaranteed Renewable = insurer must renew as long as premium is paid. Cancellation only for nonpayment. Rates can rise (by class). No insurability proof.\n\nExam key: Guaranteed Renewable = pay premium = stay covered; rates can rise.',
+  },
+  {
+    id: 'q10-deferred-fixed-annuity',
+    text: 'A 45 year-old woman won $100,000 in a scratch-off lottery ticket. She purchased an annuity that will pay her $1,500 per month beginning at age 60. Which of these annuities did this woman purchase?',
+    choices: {
+      A: 'Immediate annuity',
+      B: 'Immediate Variable annuity',
+      C: 'Deferred Fixed annuity',
+      D: 'Variable annuity',
+    },
+    correct: 'C',
+    explanation:
+      'Deferred = payments begin in the future (age 60, 15 years out). Fixed = guaranteed set amount ($1,500/month).\n\nExam key: Deferred = later; Fixed = guaranteed amount.',
+  },
+  {
+    id: 'q10-two-disabilities-march',
+    text: 'Z owns a Disability Income policy with a 30-day Elimination period. Z contracts pneumonia that leaves him unable to work from January 1 until January 15. Z then becomes disabled from an accident on February 1 and the disability lasts until July 1 the same year. Z will become eligible to receive benefits starting on:',
+    choices: {
+      A: '1-Mar',
+      B: '1-Jan',
+      C: '1-Feb',
+      D: '15-Jan',
+    },
+    correct: 'A',
+    explanation:
+      "First disability (Jan 1-15) = only 15 days, doesn't satisfy the 30-day EP. Second disability starts Feb 1 with a fresh 30-day EP = March 1 benefits begin.\n\nExam key: Separate unrelated disabilities = elimination period resets.",
+  },
+  {
+    id: 'q10-di-primary-factor-wages',
+    text: 'What is the primary factor that determines the benefits paid under a disability income policy?',
+    choices: {
+      A: 'Age',
+      B: 'Wages',
+      C: 'Type of occupation',
+      D: 'Education level',
+    },
+    correct: 'B',
+    explanation:
+      'DI replaces income, so wages drive the benefit (typically 60-70% of pre-disability income). Insurers cap benefits relative to income to maintain the incentive to return to work.\n\nExam key: Wages = primary factor in DI benefit amount.',
+  },
+  {
+    id: 'q10-di-war-exclusion',
+    text: 'Disability policies do NOT normally pay for disabilities arising from which of the following?',
+    choices: {
+      A: 'Sickness',
+      B: 'War',
+      C: 'Accidents',
+      D: 'Negligence',
+    },
+    correct: 'B',
+    explanation:
+      'War is a standard DI exclusion. Other exclusions: self-inflicted injuries, pre-existing conditions (during waiting period), criminal acts, sometimes normal pregnancy.\n\nExam key: War + self-inflicted + pre-existing = the big DI exclusions.',
+  },
+  {
+    id: 'q10-variable-annuity-not-corp',
+    text: 'Variable annuities may invest premiums in each of the following, EXCEPT:',
+    choices: {
+      A: "Insurer's corporate business account",
+      B: 'Money Market securities',
+      C: 'Junk bonds',
+      D: 'Common Stock',
+    },
+    correct: 'A',
+    explanation:
+      "Variable annuity premiums go into a separate account, kept segregated from the insurer's general/corporate account. Can invest in money market, bonds, stocks, mutual fund-like sub-accounts.\n\nExam key: Variable = separate account; Fixed = general account. Never mix.",
+  },
+  {
+    id: 'q10-time-of-payment-immediately',
+    text: 'T sends proof of loss to her insurer for an acceptable medical expense claim under her individual Health Insurance policy. Upon receipt, the insurer must pay the benefits',
+    choices: {
+      A: 'immediately',
+      B: 'within 6 months',
+      C: "at the insurer's discretion",
+      D: 'within 3 months',
+    },
+    correct: 'A',
+    explanation:
+      'Time of Payment of Claims (mandatory provision): once due proof of loss is received, benefits must be paid immediately. Periodic DI benefits = at least monthly.\n\nExam key: Proof received = pay immediately. Mandatory provision, cannot be altered.',
+  },
+  {
+    id: 'q10-gio-rider-income-grows',
+    text: 'A physician opens up a new practice and qualifies for a $7,000/month Disability Income policy. What rider would the physician add if he wants the ability to increase his policy benefit as his practice and income grow?',
+    choices: {
+      A: 'Extended Term rider',
+      B: 'Cost of Living Adjustment rider',
+      C: 'Guaranteed Insurability Option rider',
+      D: 'Waiver of Premium rider',
+    },
+    correct: 'C',
+    explanation:
+      'GIO rider = increase monthly benefit at specified future dates as income grows, without evidence of insurability. COLA adjusts for inflation AFTER disability begins (different purpose).\n\nExam key: GIO = scheduled coverage increases as income grows; COLA = inflation-adjusted benefits during disability.',
+  },
+  {
+    id: 'q10-annuity-liquidates-estate',
+    text: 'Which type of contract liquidates an estate through recurrent payments?',
+    choices: {
+      A: 'Annuity',
+      B: 'Whole life insurance',
+      C: '401(k)',
+      D: 'Universal life insurance',
+    },
+    correct: 'A',
+    explanation:
+      'Annuity = liquidates an estate via systematic payments. Life insurance = creates an estate at death. Opposite functions.\n\nExam key: Annuity = liquidates (spend down); Life = creates (builds up).',
+  },
+  {
+    id: 'q10-ppo-is-managed-care',
+    text: 'Which of these statements is INCORRECT regarding a Preferred Provider Organization (PPO)?',
+    choices: {
+      A: "PPO's are NOT a type of managed care systems",
+      B: 'In-network PPO providers offer members better coverage of incurred expenses',
+      C: "PPO's normally have more providers to chose from as compared to an HMO",
+      D: 'Prices are negotiated in advance for PPO providers',
+    },
+    correct: 'A',
+    explanation:
+      'PPOs ARE managed care, like HMOs and POS. The incorrect statement is the answer.\n\nExam key: PPO = managed care + flexibility (no referral needed, can go out-of-network). HMO = managed care with restrictions.',
+  },
+  {
+    id: 'q10-cobra-quitters-eligible',
+    text: 'Which statement concerning the Consolidated Omnibus Budget Reconciliation Act of 1985 (COBRA) is INCORRECT?',
+    choices: {
+      A: 'Continued insurance coverage under COBRA must be paid for by the ex-employee',
+      B: 'Continued insurance coverage under COBRA is available to dependents of deceased employees for up to 36 months',
+      C: 'Continued insurance coverage under COBRA is available to terminated employees for up to 18 months',
+      D: 'Continued insurance coverage under COBRA is not available to employees who quit their jobs',
+    },
+    correct: 'D',
+    explanation:
+      'COBRA IS available to employees who quit. Qualifying events include voluntary resignation, involuntary termination (except gross misconduct), reduction in hours, divorce, death of employee, dependent aging off.\n\nExam key: COBRA applies broadly — including voluntary quitters. Only gross misconduct disqualifies.',
+  },
+  {
+    id: 'q10-hipaa-portability-limits',
+    text: 'Which of the following statements BEST describes what HIPAA portability rules offer a person who decides to change from one group medical plan to another group plan?',
+    choices: {
+      A: 'Limits the preexisting condition exclusion period for late enrollees to 12 months',
+      B: 'Requires that an employer offer health coverage',
+      C: 'Guarantees coverage to new employees with pre-existing health conditions',
+      D: 'Limits the ability of a new employer plan to exclude coverage for preexisting conditions',
+    },
+    correct: 'D',
+    explanation:
+      "HIPAA portability credits prior continuous coverage toward a new plan's pre-existing waiting period. Requires Certificate of Creditable Coverage from prior insurer. Does NOT mandate employer coverage or guarantee individual coverage.\n\nExam key: HIPAA portability = your prior coverage credit transfers, reducing/eliminating new plan's pre-existing exclusion.",
+  },
+  {
+    id: 'q10-taft-hartley-negotiated',
+    text: 'Taft-Hartley Trusts are also known as:',
+    choices: {
+      A: '501(c)(9)',
+      B: 'Lodges',
+      C: 'Negotiated Trusteeships',
+      D: 'Trade associations',
+    },
+    correct: 'C',
+    explanation:
+      'Taft-Hartley Trusts (Negotiated Trusteeships) are multi-employer welfare arrangements via collective bargaining. Trust is the policyowner; members get certificates. Managed by joint employer/union board.\n\nExam key: Taft-Hartley = Negotiated Trusteeship = union/employer multi-employer trust.',
+  },
+  {
+    id: 'q10-group-health-no-evidence',
+    text: 'Under most group health insurance plans, which underwriting requirement applies to covered individuals?',
+    choices: {
+      A: 'Pre‑existing conditions are permanently excluded.',
+      B: 'Evidence of insurability is generally not required.',
+      C: 'Evidence of insurability is always required.',
+      D: 'Medical underwriting is performed on each employee annually.',
+    },
+    correct: 'B',
+    explanation:
+      'Group health underwriting is done on the group as a whole, not individual members. No medical exam or health questions for individuals. Late enrollees may need to provide evidence.\n\nExam key: Group = underwrite the group, not individuals. Major advantage of group coverage.',
+  },
+];
+
 export const SAMPLE_CHAPTERS: SampleChapter[] = [
   { name: 'Chapter 1', questions: CHAPTER_1 },
   { name: 'Chapter 2', questions: CHAPTER_2 },
@@ -2666,4 +4304,8 @@ export const SAMPLE_CHAPTERS: SampleChapter[] = [
   { name: 'Chapter 4', questions: CHAPTER_4 },
   { name: 'Chapter 5', questions: CHAPTER_5 },
   { name: 'Chapter 6', questions: CHAPTER_6 },
+  { name: 'Chapter 7', questions: CHAPTER_7, source: 'exam2' },
+  { name: 'Chapter 8', questions: CHAPTER_8, source: 'exam2' },
+  { name: 'Chapter 9', questions: CHAPTER_9, source: 'exam2' },
+  { name: 'Chapter 10', questions: CHAPTER_10, source: 'exam2' },
 ];

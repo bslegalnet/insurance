@@ -3,7 +3,7 @@ import { SAMPLE_CHAPTERS } from './sampleQuestions';
 
 const CHAPTERS_KEY = 'insurance-quiz:chapters:v3';
 const QUESTIONS_KEY = 'insurance-quiz:questions:v3';
-const SEEDED_KEY = 'insurance-quiz:seeded:v16';
+const SEEDED_KEY = 'insurance-quiz:seeded:v17';
 
 const STALE_KEYS = [
   'insurance-quiz:chapters:v2',
@@ -11,6 +11,7 @@ const STALE_KEYS = [
   'insurance-quiz:seeded:v2',
   'insurance-quiz:questions:v1',
   'insurance-quiz:seeded:v1',
+  'insurance-quiz:seeded:v16',
 ];
 
 export type AppState = { chapters: Chapter[]; questions: Question[] };
@@ -24,6 +25,7 @@ function seedState(): AppState {
   const questions: Question[] = [];
   for (const sc of SAMPLE_CHAPTERS) {
     const ch: Chapter = { id: newId('ch'), name: sc.name };
+    if (sc.source) ch.source = sc.source;
     chapters.push(ch);
     for (const q of sc.questions) {
       questions.push({ ...q, chapterId: ch.id });
