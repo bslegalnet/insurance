@@ -80,8 +80,14 @@ export default function App() {
   }
 
   function startFinalExam() {
-    if (questions.length === 0) return;
-    const shuffled = shuffleArray(questions).map(shuffleQuestion);
+    const exam1ChapterIds = new Set(
+      chapters.filter((c) => c.source !== 'exam2').map((c) => c.id)
+    );
+    const exam1Questions = questions.filter((q) =>
+      exam1ChapterIds.has(q.chapterId)
+    );
+    if (exam1Questions.length === 0) return;
+    const shuffled = shuffleArray(exam1Questions).map(shuffleQuestion);
     setActiveSet(shuffled);
     setActiveChapterId(null);
     setExamDurationSec(EXAM_DURATION_SEC);
@@ -296,6 +302,12 @@ function Home(props: {
     );
     return questions.filter((q) => exam2Ids.has(q.chapterId)).length;
   }, [chapters, questions]);
+  const exam1Count = useMemo(() => {
+    const exam1Ids = new Set(
+      chapters.filter((c) => c.source !== 'exam2').map((c) => c.id)
+    );
+    return questions.filter((q) => exam1Ids.has(q.chapterId)).length;
+  }, [chapters, questions]);
 
   return (
     <div className="card">
@@ -308,9 +320,9 @@ function Home(props: {
         <button
           className="btn primary btn-block"
           onClick={onFinalExam}
-          disabled={questions.length === 0}
+          disabled={exam1Count === 0}
         >
-          Final Exam · {questions.length} question{questions.length === 1 ? '' : 's'} · 60 min
+          Final Exam · {exam1Count} question{exam1Count === 1 ? '' : 's'} · 60 min
         </button>
       </div>
 
