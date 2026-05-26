@@ -3,7 +3,7 @@ import { SAMPLE_CHAPTERS } from './sampleQuestions';
 
 const CHAPTERS_KEY = 'insurance-quiz:chapters:v3';
 const QUESTIONS_KEY = 'insurance-quiz:questions:v3';
-const SEEDED_KEY = 'insurance-quiz:seeded:v18';
+const SEEDED_KEY = 'insurance-quiz:seeded:v19';
 
 const STALE_KEYS = [
   'insurance-quiz:chapters:v2',
@@ -13,6 +13,7 @@ const STALE_KEYS = [
   'insurance-quiz:seeded:v1',
   'insurance-quiz:seeded:v16',
   'insurance-quiz:seeded:v17',
+  'insurance-quiz:seeded:v18',
 ];
 
 export type AppState = { chapters: Chapter[]; questions: Question[] };

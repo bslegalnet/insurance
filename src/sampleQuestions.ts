@@ -1934,20 +1934,6 @@ const CHAPTER_4: SampleQuestion[] = [
       'The exclusions section is NOT included in the policy face (first page of an insurance policy).',
   },
   {
-    id: 'q4-agent-check-handling-2',
-    text:
-      'Agent J takes an application and initial premium from an applicant and sends the application and premium check to the insurance company. The insurance company returns the check back to J because the check is made out to J instead of the insurance company. What action should J take?',
-    choices: {
-      A: 'Cross off his name on the "pay to" portion of the check, write the name of the insurance company, and send the check back to the insurance company',
-      B: "Deposit the applicant's check into his account and make a personal check out to the insurance company from his personal account",
-      C: 'Return to the customer, collect a new check made out to the insurance company, and send the new check out to the insurance company',
-      D: 'Deposit the check in to his personal account, use the funds to purchase a cashiers check, and send the new cashiers check back to the insurance company',
-    },
-    correct: 'C',
-    explanation:
-      'If an agent receives a check made out to them instead of the insurance company, they should return the check to the customer and collect a new check properly made out to the insurance company.',
-  },
-  {
     id: 'q4-insuring-clause-ah',
     text:
       'The clause in an Accident and Health policy which defines the benefit amounts the insurer will pay is called the:',
@@ -2265,20 +2251,6 @@ const CHAPTER_5: SampleQuestion[] = [
     correct: 'D',
     explanation:
       "In this situation, the proceeds from E's life insurance policy will go to F. Insurable interest only needs to exist at the time of application.",
-  },
-  {
-    id: 'q5-simultaneous-death-act-2',
-    text:
-      'If the insured and primary beneficiary are both killed in the same accident and it cannot be determined who died first, where are the death proceeds to be directed under the Uniform Simultaneous Death Act?',
-    choices: {
-      A: "Primary beneficiary's estate",
-      B: "Insured's estate",
-      C: "Primary beneficiary's next of kin",
-      D: "Insured's contingent beneficiary",
-    },
-    correct: 'D',
-    explanation:
-      'Under the Uniform Simultaneous Death Act, if both insured and primary beneficiary are killed in the same accident and there is insufficient evidence to show who died first, policy proceeds will be paid as if the insured died last. In other words, the proceeds will be paid to the secondary or contingent beneficiary.',
   },
   {
     id: 'q5-group-term-conversion-coverage',
