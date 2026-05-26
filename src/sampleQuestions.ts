@@ -3120,19 +3120,6 @@ const CHAPTER_8: SampleQuestion[] = [
       'Coercion is using threats, intimidation, or pressure to influence insurance decisions. Telling a claimant "rights might be impaired" is a threat. Twisting = policy replacement misrepresentation. Defamation = false statements harming reputation. Rebating = giving inducements.\n\nExam key: Threats/pressure = coercion. Twisting is about policy replacement, not claims.',
   },
   {
-    id: 'q8-k-certificate-holder',
-    text: 'K is insured under a Group Life insurance policy. K is considered to be a(n)',
-    choices: {
-      A: 'certificate holder',
-      B: 'policyowner',
-      C: 'annuitant',
-      D: 'beneficiary',
-    },
-    correct: 'A',
-    explanation:
-      'Group life insureds = certificate holders. Master policy goes to the group sponsor; certificates go to members.\n\nExam key: Insured under group life = certificate holder.',
-  },
-  {
     id: 'q8-fiduciary-responsibility',
     text: "T is an agent and when hired, is reminded that he has a responsibility to handle clients' funds in an honest and ethical manner. This responsibility is referred to as",
     choices: {
